@@ -40,7 +40,7 @@ module.exports = (sequelize) => {
     },
     {
       createdAd: false,
-      updatedAt: false,
+      updatedAt: false
     }
   );
 };
