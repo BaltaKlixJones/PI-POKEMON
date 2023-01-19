@@ -1,38 +1,95 @@
+const { Pokemon, Type } = require("../db.js");
 const axios = require("axios");
-const { Pokemon, Type } = require("../db");
 
-// const getPokemons = async () => {
-//   const apiUrl1 = await axios.get("https://pokeapi.co/api/v2/pokemon");
-//   const apiPokemon1 = await apiUrl1.data.results;
-//   const apiUrl2 = apiUrl1.data.next;
-//   const apiUrl2a = await axios.get(apiUrl2);
-//   const apiPokemon2 = apiUrl2a.data.results;
-//   // concateno y los guardo en un solo objeto
-//   const allPokemonsApi = [...apiPokemon1, ...apiPokemon2];
-//   //Traer info pokemon ---> id, nombre, tipo, img, atributos(vida, fuerza, defensa, velocidad, altura, peso)
-//   const pokemonsInfo = [];
+let getPokemonApi = async () => {
+  const url = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=40");
+  let url2 = url.data.results.map((p) => axios.get(p.url));
+  let info = [];
 
-//   for (let i = 0; i < allPokemonsApi.length; i++) {
-//     const { url } = allPokemonsApi[i];
-//     const { data } = await axios.get(url);
-//     pokemonsInfo.push({
-//       id: data.id,
-//       name: data.name,
-//       spriteSrc: data.sprites.other.dream_world.front_default,
-//       types: data.types.map((e) => e.type.name),
-//       attack: data.stats[1].base_stat,
-//       defense: data.stats[2].base_stat,
-//       speed: data.stats[5].base_stat,
-//       hp: data.stats[0].base_stat,
-//       weight: data.weight,
-//       height: data.height,
-//     });
-//     return pokemonsInfo
-//   }
-//   const db = Pokemon.findAll({include : [{model: Type}]})
-//   const suma = [...pokemonsInfo, ...db]
-//   return suma
-// };
+  let results = await axios.all(url2).then((poke) => {
+    poke.map((p) => {
+      info.push({
+        id: p.data.id,
+        name: p.data.name,
+        img: p.data.sprites.other.dream_world.front_default,
+        hp: p.data.stats[0].base_stat ? p.data.stats[0].base_stat : "",
+        attack: p.data.stats[1].base_stat ? p.data.stats[1].base_stat : "",
+        defense: p.data.stats[2].base_stat ? p.data.stats[2].base_stat : "",
+        speed: p.data.stats[5].base_stat ? p.data.stats[5].base_stat : "",
+        height: p.data.height ? p.data.height : "",
+        weight: p.data.weight ? p.data.weight : "",
+        types: p.data.types.map((p) => p.type.name)
+          ? p.data.types.map((p) => p.type.name)
+          : "",
+        created: false,
+      });
+    });
+    return info;
+  });
+  return results;
+};
 
+let getPokemonBd = async () => {
+  try {
+    let pokemonBd = await Pokemon.findAll({
+      attributes: [
+        "id",
+        "name",
+        "hp",
+        "attack",
+        "defense",
+        "speed",
+        "height",
+        "weight",
+      ],
+      include: {
+        model: Type,
+      },
+    });
+    //console.log(pokemonBd)
+    pokemonBd = pokemonBd.map(
+      (el) =>
+        (el = {
+          name: el.name,
+          id: el.id,
+          img: el.img,
+          hp: el.hp,
+          attack: el.attack,
+          defense: el.defense,
+          speed: el.speed,
+          weight: el.weight,
+          height: el.height,
+          types: el.types.map((t) => t.nombre),
+        })
+    );
 
-// module.exports = {getPokemons}
+    return pokemonBd;
+  } catch (e) {
+    console.log("ERROR en getPokemonBd: " + e);
+  }
+};
+//uno pokems de api con BD
+let getAllPokemons = async (name) => {
+  try {
+    let [api, bd] = await Promise.all([getPokemonApi(), getPokemonBd()]);
+
+    let infoTotal = [...bd, ...api];
+    //si recibo un nombre por query entra en el if y filtro ese nombre sino devuelvo todos los Pokemons
+    if (name) {
+      let pokemonName = infoTotal.filter((el) => {
+        return el.name.toLowerCase().includes(name.toLowerCase());
+      });
+      return pokemonName;
+    } else {
+      return infoTotal;
+    }
+  } catch (e) {
+    console.log("ERROR en getPokemons: " + e);
+  }
+};
+
+module.exports = {
+  getPokemonApi,
+  getPokemonApi,
+  getAllPokemons,
+};
