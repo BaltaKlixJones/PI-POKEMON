@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
   const allPokemons = await getAllPokemons(name);
 
   try {
-    !allPokemons // si no tiene nada es porque no encontro el nombre x query
+    !allPokemons 
       ? res.status(404).send(name + " no existe")
       : res.status(200).send(allPokemons);
   } catch (e) {
@@ -60,7 +60,7 @@ router.post("/create", async (req, res) => {
     req.body;
 
   if (!name || !hp || !attack || !defense || !speed || !height || !weight)
-    res.status(400).json({ msg: "Faltan datos" }); // validar los datos
+    res.status(400).json({ msg: "Faltan datos" }); 
   try {
     const obj = {
       name,
@@ -76,7 +76,7 @@ router.post("/create", async (req, res) => {
     const nvoPokemon = await Pokemon.create(obj);
 
     // console.log(nvoPokemon.__proto__);
-    nvoPokemon.addType(types); // relaciona el pokemon nuevo con el tipo
+    nvoPokemon.addType(types); 
     const createdPokemon = Pokemon.findByPk(nvoPokemon.id, {
       include: [{ model: Type }],
     });
