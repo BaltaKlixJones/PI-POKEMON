@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
       ? res.status(404).send(name + " no existe")
       : res.status(200).send(allPokemons);
   } catch (e) {
-    console.log("Error en get /pokemons : " + e);
+    console.log("Error");
   }
 });
 
@@ -48,10 +48,10 @@ router.get("/:id", async (req, res) => {
       });
       pokemonDetail.length == pokemonDetail.length
         ? res.status(200).send(pokemonDetail)
-        : res.status(404).send("Pokemon no encontrado ");
+        : res.status(404).send("No se pudo encontrar el pokemon");
     }
   } catch (e) {
-    console.log("Error en get /:idPokemon: " + e);
+    console.log("Error en Id" + e);
   }
 });
 
