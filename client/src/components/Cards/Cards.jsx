@@ -1,11 +1,12 @@
 import React, { useEffect } from "react"; // SIMULA LOS ESTADOS DE VIDA DEL COMPONENTE
 import { useSelector, useDispatch } from "react-redux"; //HOOK. SELECCIONA DESDE NUESTRO STORE UNO DE LOS ESTADOS
-import Card from "./Card";
+import Card from "../Card/Card";
 import { Link } from "react-router-dom";
-import { getPokemones } from "../redux/actions";
+import { getPokemones } from "../../redux/actions";
+import "./Cards.css"
 
+export default function Cards(){
 
-export default function Cards() {
   //pedido de estado de redux
   let statePoke = useSelector((state) => state.pokemones);
     console.log(statePoke);
@@ -17,7 +18,7 @@ export default function Cards() {
 
   return (
     <>
-      <div style={{display: "flex", flexWrap: "wrap", justifyContent:"space-between"}}>
+      <div className="cards">
         {statePoke.length > 0 ? (
           statePoke.map((p) => 
           

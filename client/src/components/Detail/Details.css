@@ -11,7 +11,7 @@
     width: 500px;
     border-radius: 25px;
     border-color: rgb(0, 0, 0);
-    background-image: radial-gradient(rgba(76, 91, 228, 0.911) 15%, rgb(50, 132, 232) 100%, rgb(0, 0, 0) 1%);
+    background-color: rgba(154, 152, 152, 0.485);
     box-shadow: 2px 1px 20px;
   }
   
@@ -28,7 +28,7 @@
   
   .boxTypes{
     text-align: center;
-    background-color: blanchedalmond;
+    background-color: rgb(235, 172, 76);
     margin-left: 20px;
     margin-right: 20px;
     border-radius: 15px;
@@ -49,7 +49,7 @@
   
   .box2{
     width: 200px;
-    background-color: blanchedalmond;
+    background-color: rgb(170, 231, 79);
     border-radius: 25px;
     margin: 25px;
     border: black 2px solid;

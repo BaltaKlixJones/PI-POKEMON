@@ -1,76 +1,102 @@
 import axios from "axios";
 
+export const GET_POKEMONES = 'GET_POKEMONES' 
+export const GET_NAME = 'GET_NAME'
+export const GET_TYPES = 'GET_TYPES'
+export const CREATE_POKEMON = 'CREATE_POKEMON'
+export const GET_DETAILS = 'GET_DETAILS'
+export const FILTER_TYPE = 'FILTER_TYPE'
+export const ORDER_A_Z = 'ORDER_A_Z'
+export const FILTER_API_DB = "FILTER_API_DB"
+export const CURRENT_PAGE = "CURRENT_PAGE"
+
+
+
+
+
 
 // ruta para traer los pokemones haciendo el pedido a la api
 export const getPokemones = () => {
   return async (dispatch) => {
     let pedidoApi = await axios.get("http://localhost:3001/pokemons/");
-    dispatch({ type: "GET_POKEMONES", payload: pedidoApi.data });
+    dispatch({ 
+      type: "GET_POKEMONES",
+     payload: pedidoApi.data });
   };
 };
 
-export const filterPokemonesbyType = (payload)=>{
-    return {
-        type: "FILTER_BY_TYPE",
-        payload
-    }
-}
-
-export const filterCreated = (payload)=>{
-    return {
-        type: "FILTER_CREATED",
-        payload
-    }
-}
-
-export function getTypes() {
-    return async function (dispatch) {
-      let type = await axios.get("http://localhost:3001/types");
-      return dispatch({ type: "GET_TYPES", payload: type.data });
-    };
-  }
-
-
-export function postPokemon(payload) {
-    return async function (dispatch) {
-      let url = await axios.post("http://localhost:3001/pokemons", payload);
-      //console.log(json);
-      return url;
-    };
-  }
-
-
 export function getDetail(id) {
     return async function (dispatch) {
-      try {
+      
         let url = await axios.get("http://localhost:3001/pokemons/" + id);
         return dispatch({
           type: "GET_DETAILS",
           payload: url.data,
         });
-      } catch (err) {
-        console.log(err);
-      }
     };
   }
 
-  export function getNamePoke(payload){
+  export function getNamePoke(name){
     return async function (dispatch) {
-      try {
+     
         let url = await axios.get(
-          `http://localhost:3001/pokemons?name=${payload}`
+          `http://localhost:3001/pokemons?name=${name}`
         );
         return dispatch({
           type: "GET_NAME",
           payload: url.data
         })
-      } catch (error) {
-        console.log(error);
-      }
     }
   }
 
-// ruta para crear un personaje 
-export const createPokemons = () => {
-  return async (dispatch) => {};
-};
+  export const createPoke = (pokemon) => {
+    return async (dispatch) => {
+      var url = await axios.get("http://localhost:3001/pokemons", pokemon)
+      return dispatch({
+        type: "CREATE_POKEMON",
+        payload: url.data
+      })
+    };
+  };
+
+  export function getTypes() {
+      return async function (dispatch) {
+        let type = await axios.get("http://localhost:3001/pokemons/types");
+        return dispatch({ 
+          type: "GET_TYPES", 
+          payload: type.data });
+      };
+    }
+
+export const filterPokemonesbyType = (payload)=>{
+    return {
+        type: "FILTER_TYPE",
+        payload
+    }
+}
+
+export const orderA_Z = (payload) => {
+  return {
+    type: 'ORDER_A_Z',
+    payload
+  }
+}
+
+export function creApiFilt(payload){
+  return {
+      type: 'FILTER_API_DB',
+      payload
+  }
+}
+
+export function currentPage(payload){
+  return{
+      type: "CURRENT_PAGE",
+      payload
+  }
+}
+
+
+
+
+

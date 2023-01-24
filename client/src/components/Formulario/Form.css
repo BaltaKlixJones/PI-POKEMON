@@ -1,0 +1,202 @@
+#div_externo_create{
+    display: flex;
+    /* background-color: rgb(255, 255, 255); */
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+#div_interno_create{
+    background-color: rgba(0, 0, 0, 0.575);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 4rem;
+    border-style: double;
+    border-width: 1rem;
+    border-color: rgba(0, 42, 179, 0.806);
+    height: 45rem;
+    width: 80rem;
+    backdrop-filter: blur(2px);
+    color: rgb(255, 255, 255)
+}
+
+#div_interno_create h3{
+    color: rgb(255, 255, 255);
+    margin-top: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: -1.6rem;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-variant: small-caps;
+    
+}
+
+#formulario{
+    /* background-color: rgb(15, 106, 1); */
+    display: grid;
+    grid-template-columns: 450px 450px 450px;
+    grid-template-rows: 100px 200px 50px 50px;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    height: 40rem;
+    width: 80rem;
+    row-gap: 30px;
+    column-gap: 10px;
+    font-size: 1.2rem;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* align-items: center; */
+}
+
+#datos_poke1{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    /* background-color: brown; */
+    display:flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    height: 20rem;
+    width: 20rem;
+
+}
+
+
+#datos_poke2{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    /* background-color: rgb(255, 50, 231); */
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    height: 20rem;
+    width: 20rem;
+}
+
+#div_tipos{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+#div_imagen{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+#div_imagen img{
+    width: 20rem;
+}
+
+#div_crear{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 5;
+}
+
+#div_crear button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-image: linear-gradient(to top, #21ca62 0%, #1d0867 100%);
+    border: solid 3px transparent;
+    background-clip: padding-box;
+    box-shadow: 0px 0px 0px 3px #ffffff00;
+    color: white;
+    min-height: 43px;
+    padding: 0 13px 0 13px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all .5s ease;
+    margin-left: 2rem;
+  }
+  
+  #div_crear button:active {
+    transform: scale(.9);
+    transition: all 100ms ease;
+  }
+  
+  #div_crear button:hover {
+    box-shadow: 0px 0px 0px 3px #29a76d;
+  }
+  
+  #div_crear button svg {
+    width: 16px;
+  }
+
+  #div_crear p{
+    margin-left: -3rem;
+    margin-top: 1rem;
+    font-size: 0.4cm;
+  }
+
+#div_nombre{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+#div_interno_create h4{
+    color: rgb(255, 255, 255);
+    margin-top: 2rem;
+    font-size: 1rem;
+    margin-bottom: -1.6rem;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-variant:small-caps;
+    display: grid;
+        grid-template-columns: repeat(2, 0fr);
+        grid-template-rows: repeat(1, 0fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        position: relative;
+        top: -1.8rem;
+}
+
+#volver button{
+    display: flex;
+ height: 3em;
+ width: 130px;
+ align-items: center;
+ justify-content: center;
+ background-color: #eeeeee4b;
+ border-radius: 50px;
+ /* letter-spacing: 1px; */
+ transition: all 0.2s linear;
+ cursor: pointer;
+ border: none;
+ background: rgba(18, 148, 46, 0.852);
+ margin-top: -5rem;
+ margin-left: -2rem;
+ color: #d1d1d1;
+ font-size: 0.4cm;
+ text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#volver button > svg {
+ margin-right: 5px;
+ margin-left: 5px;
+ font-size: 0.4cm;
+ transition: all 0.4s ease-in;
+}
+
+#volver button:hover > svg {
+ font-size: 1.2em;
+ transform: translateX(-5px);
+}
+
+#volver button:hover {
+ box-shadow: 9px 9px 33px #07966b, -9px -9px 33px #076d96;
+ transform: translateY(-2px);
+}

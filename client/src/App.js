@@ -1,7 +1,7 @@
 import "./App.css";
-import Home from "./views/Home";
-import Form from "./components/Form";
-import Details from "./components/Details";
+import Home from "./components/Home/Home";
+import Form from "./components/Formulario/Form";
+import Details from "./components/Detail/Details";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {

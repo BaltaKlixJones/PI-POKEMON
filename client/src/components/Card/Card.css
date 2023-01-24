@@ -2,20 +2,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    background-color: rgba(154, 152, 152, 0.485);
+    border-radius: 50px;
   }
   
   .cardPoke img {
+    height: 200px;
+    width: 250px;
     margin: 12px 0px;
-    max-width: 300px;
-    max-height: 300px;
     
     text-decoration: none;
   }
   
   .imgCard {
     display: flex;
-    height: 200px;
     -webkit-filter: drop-shadow(5px 5px 5px #222);
     filter: drop-shadow(5px 5px 5px #222);
   }
