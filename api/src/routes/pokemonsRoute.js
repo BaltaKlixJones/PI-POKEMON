@@ -41,7 +41,7 @@ router.get("/:id", async (req, res) => {
   const { id } = req.params;
   const pokemones = await getAllPokemons();
   try {
-    console.log("HOLA ID ");
+    // console.log("HOLA ID ");
     if (id) {
       let pokemonDetail = pokemones.filter((el) => {
         return el.id == id;
