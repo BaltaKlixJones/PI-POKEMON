@@ -1,0 +1,11 @@
+.barraCaja {
+    margin-top: -10px;
+  }
+  
+  .barra {
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(0, 34, 72) 2px solid;
+    width: 500px;
+    height: 30px;
+  }
