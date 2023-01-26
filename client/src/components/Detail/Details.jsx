@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { getDetail } from "../../redux/actions";
 import "./Details.css"
 
+
 export default function Details(props) {
   const dispatch = useDispatch();
 
@@ -15,23 +16,26 @@ export default function Details(props) {
   const pokemon = useSelector((state) => state.detail);
 
   return (
-    <>
+    <div  id={'contenedor'}>
       <div className="title1">
       <br/>
         <h1>Pokemon Card</h1>
-        <br/>
+        
       </div>
+      <br />
       <div>
         {pokemon.length > 0 ? (
+          
           <h2>{pokemon[0].name.toUpperCase()}</h2>
-        ) : (
-          <h2>Cargando...</h2>
-        )}
+          ) : (
+            <img src="https://media.baamboozle.com/uploads/images/125978/1629738053_29014_gif-url.gif" alt="imagen"/>
+          )}
       </div>
 
       <div className="container">
         {pokemon.length > 0 ? (
           <div lassName="card">
+            <h2>Pokemon Nº{pokemon[0].id}</h2>
             <img  className="img" src={pokemon[0].img} alt="pokemonimg" />
             <h2 className="boxTypes" >Type: {" " + pokemon[0].types + " "}</h2>
             <p className="boxContainer" >
@@ -48,10 +52,10 @@ export default function Details(props) {
             </p>
           </div>
         ):<h4>Espera un segundo... </h4>}
-        <Link to="/">
+        <Link to="/home">
           <button>Volver Atras</button>
         </Link>
       </div>
-    </>
+    </div>
   );
 }

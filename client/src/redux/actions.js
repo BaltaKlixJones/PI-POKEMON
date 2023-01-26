@@ -51,10 +51,10 @@ export function getDetail(id) {
 
   export const createPoke = (pokemon) => {
     return async (dispatch) => {
-      var url = await axios.get("http://localhost:3001/pokemons", pokemon)
+      var response = await axios.post("http://localhost:3001/pokemons/create", pokemon)
       return dispatch({
         type: "CREATE_POKEMON",
-        payload: url.data
+        payload: response.data
       })
     };
   };

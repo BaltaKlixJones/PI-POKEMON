@@ -27,10 +27,11 @@ export default function NavBar() {
             placeholder="Buscar Pokemon..."
             onChange={(e) => handleInputChange(e)}
           />
-          <br />
-          <br />
-
-          <button type="submit" onClick={(e)=> handleSubmit(e)}>🔎</button>
+          
+        
+          <button className="button" type="submit" onClick={(e)=> handleSubmit(e)}>🔎</button>
+          
         </div>
       );
     }
+    // 🔎

@@ -11,8 +11,10 @@ export default function Card({name, img, types}) {
                 <h4>{name}</h4>
             </div>
                 <div className="imgCard">
-                <img src = {img} alt= "flag"/>
-            </div>
+                    {img ? 
+                <img src = {img} alt= "pokemonImg"/>
+                : <img style={{}} src = "https://media.baamboozle.com/uploads/images/125978/1629738053_29014_gif-url.gif" alt= "No se pudo cargar la imagen"/>
+            }</div>
             <div>
                 <h4>Tipo:</h4>
                 <h4>{types?.map(e=> <span>{e + " "}</span> )}</h4>

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { getPokemones } from "../../redux/actions";
 import "./Cards.css"
 
+
 export default function Cards(){
 
   //pedido de estado de redux
@@ -19,15 +20,20 @@ export default function Cards(){
   return (
     <>
       <div className="cards">
-        {statePoke.length > 0 ? (
-          statePoke.map((p) => 
-          
-          <Link key ={p.id} to={`/details/${p.id}`}>
-          <Card name={p.name} img ={p.img} types={p.types}/> <br/>
-          </Link>
-          )) : (
-         <h2>Cargando...</h2>
-        )}
+        {statePoke.length > 0 ?   (
+          (
+            statePoke.map((p) => 
+            
+            <Link key ={p.id} to={`/details/${p.id}`}>
+           <Card  name={p.name}  
+           img ={p.img} 
+           types={p.types}/> <br/>
+           </Link>
+           ))
+        )
+        :
+        <h2>Cargando...</h2>
+       }
       </div>
     </>
   );

@@ -4,23 +4,24 @@ import NavBar from "../NavBar/NavBar";
 import { getPokemones, filterPokemonesbyType, orderA_Z, getTypes, creApiFilt} from "../../redux/actions";
 import {Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import {  useEffect } from "react";
+import "./Home.css"
 
 
 
 export default function Home(){
         const dispatch = useDispatch()
-        const allPokemons = useSelector((state) =>state.pokemones)
+        // const allPokemons = useSelector((state) =>state.pokemones)
 
         useEffect(()=>{
             dispatch(getTypes())
-        },[])
+        },[dispatch])
 
         const allTypes  = useSelector(state => state.types)
 
         useEffect(()=>{
             dispatch(getPokemones());
-        },[])
+        },[dispatch])
 
         function handleOrderAZ(e){
             dispatch(orderA_Z(e.target.value))
@@ -33,16 +34,19 @@ export default function Home(){
         // e.preventDefault()
         dispatch(filterPokemonesbyType(e.target.value))
     }
-    let arrEmojis = [
-        "hola"
-    ]
+    // let arrEmojis = [
+    //     "hola"
+    // ]
 
     return (
 
-        <div >
+        <div id={'home'} >
+            
             <br />
            <Link to="/create">
-           <button>Crear pokemon</button>
+            <div className="btnCrearhome">
+           <h5>Crear pokemon</h5>
+           </div>
            </Link>
            <select onChange={(e) => handleOrderAZ(e)}>
            
@@ -72,11 +76,13 @@ export default function Home(){
             </select> 
             
             <h1>Pokemones</h1>
-            
-            
             <NavBar/>
             <br/>
+            <div  >
+                
             <Cards/>
+            </div>
+           
         </div>
     )
 }

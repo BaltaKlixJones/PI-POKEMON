@@ -1,3 +1,12 @@
+#contenedor {
+  background-image: url('https://www.molaunhuevo.com/wp-content/uploads/fondo-pokemon.jpg');
+  background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 1200px;
+}
+
 .img {
     width: 250px;
     -webkit-filter: drop-shadow(5px 5px 5px #222);

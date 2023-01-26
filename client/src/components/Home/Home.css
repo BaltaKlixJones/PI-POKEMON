@@ -1,25 +1,49 @@
 #home{
-    background-image: url('https://w0.peakpx.com/wallpaper/293/155/HD-wallpaper-pokemon-pokemons.jpg');
+    background-image: url('https://www.molaunhuevo.com/wp-content/uploads/fondo-pokemon.jpg');
+    /* background-position: center;
+    height: 99.9vh; */
     background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    height: 99.9vh;
+    background-repeat: no-repeat;
+    height: max-content;
 
 }
+.btnCrearhome {
+    position: absolute;
+    left: 20px;
+    top: 50px;
+    background-image: linear-gradient(to right, #00b09b, #96c93d); /* Fondo con gradiente */
+  color: #fff; /* Texto blanco */
+  font-size: 14px; /* Tamaño de la fuente */
+  padding: 6px 12px; /* Espaciado interno */
+  border-radius: 25px; /* Bordes redondos */
+  border: none; /* Sin bordes */
+  box-shadow: 0px 2px 7px rgba(0,0,0,0.25); /* Sombra */
+  transition: all 0.2s ease; /* Transición suave */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  letter-spacing: 1px; /* Espaciado entre letras */
+  font-weight: 600; /* Peso de la fuente */
+  cursor: pointer; /* Cursor de mano */
+  }
 
-#contenedor{
+  .btnCrearhome{
+    background-image: linear-gradient(to right, #07418e, #00b09b); /* Cambio de gradiente al pasar el mouse */
+    transform: scale(1.05); /* Aumento de tamaño al pasar el mouse */
+  }
+  
+/* #contenedor{
      backdrop-filter: blur(3px);
     background-color: rgba(0, 0, 0, 0.658);
     border-radius: 3rem;
-    border-color: rgba(19, 255, 133, 0.584);
+    border-color: rgba(245, 155, 45, 0.985);
     border-style: double;
     border-width: 0.7rem;
     
     
-}
+} */
 
-    #cartas{
+    /* #cartas{
         display: grid;
         grid-template-columns: repeat(4, 2fr);
         grid-template-rows: repeat(4, 0.07fr);
@@ -27,33 +51,33 @@
         grid-row-gap: 20px;
         position: relative;
         top: -1.8rem;
-    }
+    } */
 
-#non-line{
+/* #non-line{
     text-decoration: none;
-}
+} */
 
-
+/* 
 #div_externo_selectores{
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: center; */
     /* background-color: rgb(255, 0, 0); */
-    height: 3rem;
-}
+    /* height: 3rem;
+} */
 
-#div_interno_selectores{
+/* #div_interno_selectores{
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: center; */
     /* background-color: rgb(0, 238, 255); */
-    height: 2.4rem;
+    /* height: 2.4rem;
     width: 34rem;
-}
+} */
 
 
 
-#button_recarga {
+/* #button_recarga {
     text-decoration: none;
     border: none;
     font-size: 14px;
@@ -67,9 +91,9 @@
     background-size: 400%;
     border-radius: 30px;
     z-index: 1;
-   }
+   } */
    
-   #button_recarga:hover {
+   /* #button_recarga:hover {
     animation: ani 8s linear infinite;
     border: none;
    }
@@ -103,4 +127,4 @@
    
    #button_recarga:active {
     background: linear-gradient(32deg,#02b128,#0ebcf1,#00307d,#02b168);
-   }
+   } */
