@@ -76,14 +76,27 @@ router.post("/create", async (req, res) => {
     const nvoPokemon = await Pokemon.create(obj);
 
     // console.log(nvoPokemon.__proto__);
-    nvoPokemon.addType(types); 
-    const createdPokemon = Pokemon.findByPk(nvoPokemon.id, {
-      include: [{ model: Type }],
-    });
+// const tipos  =await Type.findAll({
+//   where : {
+//     name: types
+//   }
+//   })
+const tipos = await Type.findAll({
+  where: {
+    name: types,
+  },
+});
+nvoPokemon.addType(tipos);
 
-    createdPokemon
-      ? res.status(200).send("Pokemon creado con exito")
-      : res.status(400).send("No se pudo crear el pokemon");
+// nvoPokemon.addType(types); 
+// const createdPokemon = Pokemon.findByPk(nvoPokemon.id, {
+  //   include: [{ model: Type }],
+  // });
+  
+  nvoPokemon
+  ? res.status(200).send("Pokemon creado con exito")
+  : res.status(400).send("No se pudo crear el pokemon");
+  return nvoPokemon;
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

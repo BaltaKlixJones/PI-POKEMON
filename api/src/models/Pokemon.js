@@ -38,9 +38,8 @@ module.exports = (sequelize) => {
       },
       img: {
         type: DataTypes.STRING,
-        defaultValue:
-          "https://w7.pngwing.com/pngs/903/607/png-transparent-pokemon-x-and-y-espurr-pokemon-go-umbreon-nothing-grows-here.png",
-      },
+        
+      }, 
       createdInBd: {
         type: DataTypes.BOOLEAN,
         allowNull: false,

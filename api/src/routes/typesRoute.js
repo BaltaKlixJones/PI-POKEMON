@@ -3,6 +3,6 @@ const router = express.Router();
 const { Pokemon, Type } = require("../db");
 
 
-module.exports = router.get("/", (req, res) => {});
+module.exports = router.get("/types", (req, res) => {});
 
 

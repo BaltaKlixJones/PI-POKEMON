@@ -2,7 +2,7 @@ const { Pokemon, Type } = require("../db.js");
 const axios = require("axios");
 
 let getPokemonApi = async () => {
-  const url = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=40");
+  const url = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=50");
   let url2 = url.data.results.map((p) => axios.get(p.url));
   let info = [];
 
@@ -21,7 +21,7 @@ let getPokemonApi = async () => {
         types: p.data.types.map((p) => p.type.name)
           ? p.data.types.map((p) => p.type.name)
           : "",
-        created: false,
+        
       });
     });
     return info;
@@ -29,46 +29,82 @@ let getPokemonApi = async () => {
   return results;
 };
 
-let getPokemonBd = async () => {
-  try {
-    let pokemonBd = await Pokemon.findAll({
-      attributes: [
-        "id",
-        "name",
-        "hp",
-        "attack",
-        "defense",
-        "speed",
-        "height",
-        "weight",
-      ],
-      include: {
-        model: Type,
-      },
-    });
-    //console.log(pokemonBd)
-    pokemonBd = pokemonBd.map(
-      (el) =>
-        (el = {
-          name: el.name,
-          id: el.id,
-          img: el.img,
-          hp: el.hp,
-          attack: el.attack,
-          defense: el.defense,
-          speed: el.speed,
-          weight: el.weight,
-          height: el.height,
-          types: el.types.map((t) => t.nombre),
-        })
-    );
 
-    return pokemonBd;
-  } catch (e) {
-    console.log("ERROR en getPokemonBd: " + e);
-  }
+
+let getPokemonBd = async () => {
+  // try {
+  //   let pokemonBd = await Pokemon.findAll({
+  //     attributes: [
+  //       "id",
+  //       "name",
+  //       "hp",
+  //       "attack",
+  //       "defense",
+  //       "speed",
+  //       "height",
+  //       "weight",
+  //     ],
+  //     include: {
+  //       model: Type,
+  //     },
+  //   });
+  //   //console.log(pokemonBd)
+  //   pokemonBd = pokemonBd.map(
+  //     (el) =>
+  //       (el = {
+  //         name: el.name,
+  //         id: el.id,
+  //         img: el.img,
+  //         hp: el.hp,
+  //         attack: el.attack,
+  //         defense: el.defense,
+  //         speed: el.speed,
+  //         weight: el.weight,
+  //         height: el.height,
+  //         types: el.types.map((t) => t.nombre),
+  //       })
+  //   );
+
+  //   return pokemonBd;
+  // } catch (e) {
+  //   console.log("ERROR en getPokemonBd: " + e);
+  // }
+
+  let pokeDb = await Pokemon.findAll({
+    include:[{
+        model: Type,
+        attributes: ['name'],
+        through:{
+            attributes: []
+        }
+    }]
+})
+
+let pokeTMap = pokeDb.map(curr => {
+    return{
+        id: curr.id,
+        name: curr.name,
+        height: curr.height,
+        weight: curr.weight,
+        hp: curr.hp,
+        attack: curr.attack,
+        defense: curr.defense,
+        speed: curr.speed,
+        image: curr.image,
+        types: curr.types.map(curr => curr.name)
+    }
+})
+ 
+return pokeTMap
+
+
 };
-//uno pokems de api con BD
+
+
+
+
+
+
 let getAllPokemons = async (name) => {
   try {
     let [api, bd] = await Promise.all([getPokemonApi(), getPokemonBd()]);
