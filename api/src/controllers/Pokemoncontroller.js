@@ -32,43 +32,6 @@ let getPokemonApi = async () => {
 
 
 let getPokemonBd = async () => {
-  // try {
-  //   let pokemonBd = await Pokemon.findAll({
-  //     attributes: [
-  //       "id",
-  //       "name",
-  //       "hp",
-  //       "attack",
-  //       "defense",
-  //       "speed",
-  //       "height",
-  //       "weight",
-  //     ],
-  //     include: {
-  //       model: Type,
-  //     },
-  //   });
-  //   //console.log(pokemonBd)
-  //   pokemonBd = pokemonBd.map(
-  //     (el) =>
-  //       (el = {
-  //         name: el.name,
-  //         id: el.id,
-  //         img: el.img,
-  //         hp: el.hp,
-  //         attack: el.attack,
-  //         defense: el.defense,
-  //         speed: el.speed,
-  //         weight: el.weight,
-  //         height: el.height,
-  //         types: el.types.map((t) => t.nombre),
-  //       })
-  //   );
-
-  //   return pokemonBd;
-  // } catch (e) {
-  //   console.log("ERROR en getPokemonBd: " + e);
-  // }
 
   let pokeDb = await Pokemon.findAll({
     include:[{
@@ -99,9 +62,6 @@ return pokeTMap
 
 
 };
-
-
-
 
 
 
