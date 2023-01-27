@@ -1,5 +1,5 @@
 .form{
-  background-image: url('https://www.molaunhuevo.com/wp-content/uploads/fondo-pokemon.jpg');
+  background-image: url('https://assets.pokemon.com/assets//cms-es-es/img/funzone/downloads/xy/Yveltal-Pokemon-X-and-Y_1920x1200.jpg');
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -50,6 +50,7 @@
     margin-right: 8px; /* espaciado entre el icono y el texto */
     fill: #fff; /* color del icono */
     text-decoration: none;
+    color: white;
   }
   
   .back-button:hover {

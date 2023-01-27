@@ -10,8 +10,7 @@ export const ORDER_A_Z = 'ORDER_A_Z'
 export const FILTER_API_DB = "FILTER_API_DB"
 export const CURRENT_PAGE = "CURRENT_PAGE"
 // export const DELETE = "DELETE"
-
-
+export const CLEAN_POKEMONS = "CLEAN_POKEMONS";
 
 
 
@@ -20,11 +19,18 @@ export const CURRENT_PAGE = "CURRENT_PAGE"
 export const getPokemones = () => {
   return async (dispatch) => {
     let pedidoApi = await axios.get("http://localhost:3001/pokemons/");
-    dispatch({ 
+   return dispatch({ 
       type: "GET_POKEMONES",
      payload: pedidoApi.data });
   };
 };
+
+// export const cleanPokemons = (dispatch) => {
+//   return dispatch({
+//     type: CLEAN_POKEMONS,
+//     payload: [],
+//   });
+// };
 
 export function getDetail(id) {
     return async function (dispatch) {
@@ -55,7 +61,7 @@ export function getDetail(id) {
       var response = await axios.post("http://localhost:3001/pokemons/create", pokemon)
       return dispatch({
         type: "CREATE_POKEMON",
-        payload: response.data
+       response
       })
     };
   };

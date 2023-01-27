@@ -9,7 +9,7 @@ import {
   GET_TYPES,
   FILTER_API_DB,
   ORDER_A_Z,
-  // DELETE
+  // CLEAN_POKEMONS
 } from "./actions";
 
 let initialState = {
@@ -26,6 +26,7 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         pokemones: action.payload,
         allPokemons: action.payload,
+        
       };
     case GET_TYPES:
       return {
@@ -56,8 +57,13 @@ export default function rootReducer(state = initialState, action) {
     case CREATE_POKEMON:
       return {
         ...state,
-        pokemones: [...state.pokemones, action.payload],
+        // pokemones: [...state.pokemones, action.payload],
       };
+      // case CLEAN_POKEMONS:
+      // return {
+      //   ...state,
+      //   pokemons: action.payload,
+      // };
     case ORDER_A_Z:
       let ordName = [...state.allPokemons];
       let pokeByName =

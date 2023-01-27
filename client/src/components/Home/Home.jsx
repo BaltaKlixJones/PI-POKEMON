@@ -56,7 +56,7 @@ export default function Home(){
 
 
            
-           <h3>Filtrar por:</h3>
+           <h3 className="textFilter">Filtrar por:</h3>
            
             <select className="btnOrdenar" onChange={(e) => handleOrderAZ(e)}>
                 <option value={'asc'}>A-Z</option>

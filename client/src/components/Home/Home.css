@@ -1,135 +1,160 @@
-#home{
-    background-image: url('https://assets.pokemon.com/assets//cms-es-es/img/funzone/downloads/xy/Yveltal-Pokemon-X-and-Y_1920x1200.jpg');
-    /* background-position: center;
+#home {
+  background-image: url("https://assets.pokemon.com/assets//cms-es-es/img/funzone/downloads/xy/Yveltal-Pokemon-X-and-Y_1920x1200.jpg");
+  /* background-position: center;
     height: 99.9vh; */
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    height: max-content;
-
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: max-content;
 }
+
+.textFilter{
+  color: white;
+  font-size: 30px;
+}
+
 .btnCrearhome {
-    position: absolute;
-    left: 20px;
-    top: 50px;
-    background-image: linear-gradient(to right, #00b09b, #96c93d); /* Fondo con gradiente */
+  position: absolute;
+  left: 20px;
+  top: 50px;
+  background-image: linear-gradient(
+    to right,
+    #00b09b,
+    #96c93d
+  ); /* Fondo con gradiente */
   color: #fff; /* Texto blanco */
   font-size: 14px; /* Tamaño de la fuente */
   padding: 6px 12px; /* Espaciado interno */
   border-radius: 25px; /* Bordes redondos */
   border: none; /* Sin bordes */
-  box-shadow: 0px 2px 7px rgba(0,0,0,0.25); /* Sombra */
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.25); /* Sombra */
   transition: all 0.2s ease; /* Transición suave */
   text-transform: uppercase; /* Texto en mayúsculas */
   letter-spacing: 1px; /* Espaciado entre letras */
   font-weight: 600; /* Peso de la fuente */
   cursor: pointer; /* Cursor de mano */
-  background-image: linear-gradient(to right, #07418e, #00b09b); /* Cambio de gradiente al pasar el mouse */
-    transform: scale(1.05); /* Aumento de tamaño al pasar el mouse */
-  }
-  
+  background-image: linear-gradient(
+    to right,
+    #07418e,
+    #00b09b
+  ); /* Cambio de gradiente al pasar el mouse */
+  transform: scale(1.05); /* Aumento de tamaño al pasar el mouse */
+}
 
-  .containerRecarga {
-    position: absolute; /* para que el botón siempre este en la misma posición */
-    right: 30px; /* distancia desde el borde derecho */
-    
-    top: 50px;
-    height: 55px;
-   
-  }
-  
-  .reload-button {
-    /* Tamaño y forma */
-    width: 110px;
-    background-image: linear-gradient(to right, #00b09b, #96c93d); /* Fondo con gradiente */
-    height: 65px;
-    
-    color: #fff; /* Texto blanco */
-    font-size: 14px; /* Tamaño de la fuente */
-    padding: 6px 12px; /* Espaciado interno */
-    border-radius: 25px; /* Bordes redondos */
-    border: none; /* Sin bordes */
-    box-shadow: 0px 2px 7px rgba(0,0,0,0.25); /* Sombra */
-    transition: all 0.2s ease; /* Transición suave */
-    text-transform: uppercase; /* Texto en mayúsculas */
-    letter-spacing: 1px; /* Espaciado entre letras */
-    font-weight: 600; /* Peso de la fuente */
-    cursor: pointer; /* Cursor de mano */
-    background-image: linear-gradient(to right, #07418e, #00b09b); /* Cambio de gradiente al pasar el mouse */
-      transform: scale(1.05); /* Aumento de tamaño al pasar el mouse */
-  }
-  
-  
+.containerRecarga {
+  position: absolute; /* para que el botón siempre este en la misma posición */
+  right: 30px; /* distancia desde el borde derecho */
 
-  
-  
-  .btnOrdenar {
-    position: center;
-    background-image: linear-gradient(to right, #07418e, #00b09b); /* Fondo con gradiente */
-    color: #fff; /* Texto blanco */
-    font-size: 14px; /* Tamaño de la fuente */
-    padding: 6px 12px; /* Espaciado interno */
-    border-radius: 25px; /* Bordes redondos */
-    border: none; /* Sin bordes */
-    box-shadow: 0px 2px 7px rgba(0,0,0,0.25); /* Sombra */
-    transition: all 0.2s ease; /* Transición suave */
-    letter-spacing: 1px; /* Espaciado entre letras */
-    font-weight: 600; /* Peso de la fuente */
-    cursor: pointer; /* Cursor de mano */
-    margin: 20px;
-  }
+  top: 50px;
+  height: 55px;
+}
 
-  .pokemon-title {
-   
-    font-family: 'Pokemon Font', sans-serif; /* Fuente personalizada */
+.reload-button {
+  /* Tamaño y forma */
+  width: 110px;
+  background-image: linear-gradient(
+    to right,
+    #00b09b,
+    #96c93d
+  ); /* Fondo con gradiente */
+  height: 65px;
+
+  color: #fff; /* Texto blanco */
+  font-size: 14px; /* Tamaño de la fuente */
+  padding: 6px 12px; /* Espaciado interno */
+  border-radius: 25px; /* Bordes redondos */
+  border: none; /* Sin bordes */
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.25); /* Sombra */
+  transition: all 0.2s ease; /* Transición suave */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  letter-spacing: 1px; /* Espaciado entre letras */
+  font-weight: 600; /* Peso de la fuente */
+  cursor: pointer; /* Cursor de mano */
+  background-image: linear-gradient(
+    to right,
+    #07418e,
+    #00b09b
+  ); /* Cambio de gradiente al pasar el mouse */
+  transform: scale(1.05); /* Aumento de tamaño al pasar el mouse */
+}
+
+.btnOrdenar {
+  position: center;
+  background-image: linear-gradient(
+    to right,
+    #07418e,
+    #00b09b
+  ); /* Fondo con gradiente */
+  color: #fff; /* Texto blanco */
+  font-size: 14px; /* Tamaño de la fuente */
+  padding: 6px 12px; /* Espaciado interno */
+  border-radius: 25px; /* Bordes redondos */
+  border: none; /* Sin bordes */
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.25); /* Sombra */
+  transition: all 0.2s ease; /* Transición suave */
+  letter-spacing: 1px; /* Espaciado entre letras */
+  font-weight: 600; /* Peso de la fuente */
+  cursor: pointer; /* Cursor de mano */
+  margin: 20px;
+}
+
+.pokemon-title {
+  font-family: "Pokemon Font", sans-serif; /* Fuente personalizada */
   font-size: 50px; /* Tamaño de la letra */
   text-align: center; /* Alineación del texto */
   color: rgb(196, 255, 3); /* Color del texto */
   text-shadow: 2px 2px #ff0000; /* Sombra del texto */
-  background-image: linear-gradient(to right, #064167, #168faa); /* Fondo con gradiente */
+  background-image: linear-gradient(
+    to right,
+    #064167,
+    #168faa
+  ); /* Fondo con gradiente */
   /*background-image: url(../../../public/trueno-truenos.gif); /* Imagen de fondo */
   background-size: cover; /* Ajusta la imagen al tamaño del contenedor */
   padding: 30px; /* Espacio interior */
   border-radius: 20px; /* Bordes redondos */
   border: 3px solid rgb(14, 1, 1); /* Ancho, tipo y color del borde */
-  }
-  
+}
 
-  .btnCreados {
-    
-        position: center;
-        background-image: linear-gradient(to right, #00b09b, #96c93d); /* Fondo con gradiente */
-        color: #fff; /* Texto blanco */
-        font-size: 14px; /* Tamaño de la fuente */
-        padding: 6px 12px; /* Espaciado interno */
-        border-radius: 25px; /* Bordes redondos */
-        border: none; /* Sin bordes */
-        box-shadow: 0px 2px 7px rgba(0,0,0,0.25); /* Sombra */
-        transition: all 0.2s ease; /* Transición suave */
-        text-transform: uppercase; /* Texto en mayúsculas */
-        letter-spacing: 1px; /* Espaciado entre letras */
-        font-weight: 600; /* Peso de la fuente */
-        cursor: pointer; /* Cursor de mano */
-        margin: 20px;
-      }
-  
+.btnCreados {
+  position: center;
+  background-image: linear-gradient(
+    to right,
+    #00b09b,
+    #96c93d
+  ); /* Fondo con gradiente */
+  color: #fff; /* Texto blanco */
+  font-size: 14px; /* Tamaño de la fuente */
+  padding: 6px 12px; /* Espaciado interno */
+  border-radius: 25px; /* Bordes redondos */
+  border: none; /* Sin bordes */
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.25); /* Sombra */
+  transition: all 0.2s ease; /* Transición suave */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  letter-spacing: 1px; /* Espaciado entre letras */
+  font-weight: 600; /* Peso de la fuente */
+  cursor: pointer; /* Cursor de mano */
+  margin: 20px;
+}
 
-      .btnTipos {
-        position: center;
-        background-image: linear-gradient(to right, #00b09b, #96c93d); /* Fondo con gradiente */
-        color: #fff; /* Texto blanco */
-        font-size: 14px; /* Tamaño de la fuente */
-        padding: 6px 12px; /* Espaciado interno */
-        border-radius: 25px; /* Bordes redondos */
-        border: none; /* Sin bordes */
-        box-shadow: 0px 2px 7px rgba(0,0,0,0.25); /* Sombra */
-        transition: all 0.2s ease; /* Transición suave */
-         /* Texto en mayúsculas */
-        letter-spacing: 1px; /* Espaciado entre letras */
-        font-weight: 600; /* Peso de la fuente */
-        cursor: pointer; /* Cursor de mano */
-        margin: 20px;
-      }
-
-  
+.btnTipos {
+  position: center;
+  background-image: linear-gradient(
+    to right,
+    #00b09b,
+    #96c93d
+  ); /* Fondo con gradiente */
+  color: #fff; /* Texto blanco */
+  font-size: 14px; /* Tamaño de la fuente */
+  padding: 6px 12px; /* Espaciado interno */
+  border-radius: 25px; /* Bordes redondos */
+  border: none; /* Sin bordes */
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.25); /* Sombra */
+  transition: all 0.2s ease; /* Transición suave */
+  /* Texto en mayúsculas */
+  letter-spacing: 1px; /* Espaciado entre letras */
+  font-weight: 600; /* Peso de la fuente */
+  cursor: pointer; /* Cursor de mano */
+  margin: 20px;
+}

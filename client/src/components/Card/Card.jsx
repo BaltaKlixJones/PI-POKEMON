@@ -13,8 +13,8 @@ export default function Card({name, img, types}) {
                 <div className="imgCard">
                     {img ? 
                 <img src = {img} alt= "pokemonImg"/>
-                : <img  src = "https://media.baamboozle.com/uploads/images/125978/1629738053_29014_gif-url.gif" alt= "No se pudo cargar la imagen"/>
-            }</div>
+                : <img  src = "https://cdn.dribbble.com/users/1081076/screenshots/2832850/pokemongo.gif" alt= "No se pudo cargar la imagen"/> } 
+        </div>
             <div className="cardPoke-description">
                 <h4>Tipo:</h4>
                 <h4>{types?.map(e=> <span>{e + " "}</span> )}</h4>
@@ -23,4 +23,3 @@ export default function Card({name, img, types}) {
         </div>
     )
 }
-// style={{display :"flex", height: "200px"}

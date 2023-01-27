@@ -26,7 +26,7 @@ export default function Details(props) {
       <div>
         {pokemon.length > 0 ? (
           
-          <h2>{pokemon[0].name.toUpperCase()}</h2>
+          <h2 style={{color:"white"}}>{pokemon[0].name.toUpperCase()}</h2>
           ) : (
             <img src="https://media.baamboozle.com/uploads/images/125978/1629738053_29014_gif-url.gif" alt="imagen"/>
           )}
@@ -36,8 +36,10 @@ export default function Details(props) {
         {pokemon.length > 0 ? (
           <div lassName="card">
             <h2>Pokemon Nº{pokemon[0].id}</h2>
-
-            <img  className="img" src={pokemon[0].img} alt="No se pudo cargar la imagen" />:      
+          {pokemon[0].img? 
+            <img  className="img" src={pokemon[0].img} alt="No se pudo cargar la imagen" />:  
+            <img className="img" src={"https://thumbnail.imgbin.com/12/24/23/imgbin-pok-mon-x-and-y-espurr-pok-mon-go-umbreon-nothing-grows-here-27nD41GQcfxgSbtRH8sy9uyqB_t.jpg"} alt="no hay imagen"/>
+          }    
           
             <h2 className="boxTypes" >Type: {" " + pokemon[0].types + " "}</h2>
             <p className="boxContainer" >
