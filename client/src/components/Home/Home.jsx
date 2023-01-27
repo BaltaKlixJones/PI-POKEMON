@@ -9,6 +9,7 @@ import "./Home.css"
 
 
 
+
 export default function Home(){
         const dispatch = useDispatch()
         // const allPokemons = useSelector((state) =>state.pokemones)
@@ -93,6 +94,7 @@ export default function Home(){
             <div  >
                 
             <Cards />
+           
             </div>
            
         </div>

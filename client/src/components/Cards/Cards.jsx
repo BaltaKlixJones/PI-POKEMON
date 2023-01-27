@@ -5,9 +5,13 @@ import { Link } from "react-router-dom";
 import { getPokemones } from "../../redux/actions";
 import "./Cards.css";
 
+
 export default function Cards() {
  
   let statePoke = useSelector((state) => state.pokemones);
+
+  
+
   console.log(statePoke);
   const dispatch = useDispatch();
 
@@ -15,6 +19,11 @@ export default function Cards() {
     dispatch(getPokemones());
   }, [dispatch]);
 
+  // const handleDelete = (e) => {
+  //   const card = [...statePoke]
+  //   card.splice(e.statePoke)
+  // }
+  
   
   return (
     <>

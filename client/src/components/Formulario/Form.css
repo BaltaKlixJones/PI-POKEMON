@@ -5,29 +5,88 @@
   background-attachment: fixed;
   background-repeat: no-repeat;
   height: max-content;
+  color: rgb(241, 241, 246)
 }
-
-
 .conteiner {
     width: 500px; /* para darle un ancho al formulario */
     margin: 0 auto; /* para centrarlo en la página */
     padding: 20px; /* para darle un poco de espacio alrededor */
-    
+    background-color: rgba(5, 3, 60, 0.674);
     text-decoration: none;
   }
+
+  .typesSelect {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    background-color: rgba(176, 176, 213, 0.68);
+ 
+
+  }
+
+  .pTypes {
+    font-family: "Pokemon", sans-serif;
+    font-size: 1rem;
+    color: rgb(5, 0, 0);
+    margin-right: 0.5vw;
+    
+  }
+
+  .btnDelete {
+    text-decoration: none;
+    width: 3vw;
+    height: 3vh;
+    background-color: rgba(239, 2, 2, 0.816);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.651);
+    font-family: "Verdana", sans-serif;
+    font-size: 0.8rem;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .btnDelete:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgba(48, 30, 9, 0.897);
+  }
+
   
   .titulo {
     display: block; /* para que cada label ocupe toda la línea */
     margin-bottom: 10px; /* para separar cada label del siguiente */
     background-color: rgb(59, 124, 231);
   }
+  .tipos {
+    width: 95%; /* para que ocupen todo el ancho del formulario */
+    padding: 10px; /* para darles un poco de espacio */
+    margin-bottom: 20px; /* para separarlos entre sí */
+    background-color: rgba(154, 152, 152, 0.485)
+  }
   
   .input {
     width: 95%; /* para que ocupen todo el ancho del formulario */
     padding: 10px; /* para darles un poco de espacio */
     margin-bottom: 20px; /* para separarlos entre sí */
+    background-color: rgba(154, 152, 152, 0.485)
   }
-  
+.atributos {
+  width: 95%; /* para que ocupen todo el ancho del formulario */
+    padding: 10px; /* para darles un poco de espacio */
+    margin-bottom: 20px; /* para separarlos entre sí */
+    background-color: rgba(154, 152, 152, 0.485)
+}
+
+  .atributos2 {
+    width: 95%; /* para que ocupen todo el ancho del formulario */
+    padding: 10px; /* para darles un poco de espacio */
+    margin-bottom: 20px; /* para separarlos entre sí */
+    background-color: rgba(154, 152, 152, 0.485)
+  }
+
   .input {
     border: 1px solid rgb(170, 159, 159); /* para darles un borde */
   }
@@ -57,3 +116,9 @@
     background-color: #444; /* color de fondo al pasar el mouse */
   }
   
+  .btnCrear {
+    width: 95%; /* para que ocupen todo el ancho del formulario */
+    padding: 10px; /* para darles un poco de espacio */
+    margin-bottom: 20px; /* para separarlos entre sí */
+    background-color: rgba(154, 152, 152, 0.485)
+  }

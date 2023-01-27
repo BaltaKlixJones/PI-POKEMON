@@ -165,8 +165,8 @@ export default function CreatePokemon() {
     //   // setInput({ ...input, img: [...input.img] });
     // }
 
-    if (pokeValidar.types.length === 0 ) {
-      validError.types = "Debe tener un tipo!";
+    if (pokeValidar.types.length === 0 ||  pokeValidar.types.length > 2) {
+      validError.types = "Debe tener un maximo de 2 tipos!";
     }
 
     setError(validError);
@@ -191,6 +191,13 @@ export default function CreatePokemon() {
       setDisEna(false);
     }
   };
+
+  const handleDelete = (e) => {
+    setInput({
+      ...input,
+      types: input.types.filter((type) => type !== e),
+    });
+  };
   
   return (
     <div className="form">
@@ -206,7 +213,7 @@ export default function CreatePokemon() {
         <h2>¡Crea tu Pokemon!</h2>
 
         <br />
-        <form onSubmit={(e) => handleSubmit(e)} id={"formulario"}>
+        <form onSubmit={(e) => handleSubmit(e)} className="form">
           <div className="input">
             <label>Nombre: </label>
             <input
@@ -261,7 +268,7 @@ export default function CreatePokemon() {
               onChange={(e) => handleOnChange(e)}
             />
             <p>{input.attack}</p>
-            <p>{error.attack}</p>
+            <p>{error.attack }</p>
             <br />
 
             <label>Defensa: </label>
@@ -342,6 +349,7 @@ export default function CreatePokemon() {
           </div>
           <div className="tipos">
             <label>Tipos: </label>
+            
             <select onChange={(e) => handleTypes(e)}>
               {tipos?.map((ty) => {
                 return (
@@ -351,15 +359,24 @@ export default function CreatePokemon() {
                 );
               })}
             </select>
-{/*             
-                      {
-                      input.types?.map(curr => {
-                          return(
-                              <Cards key={curr} idT={curr} nameT={tipos[curr - 1].type} input={input} set={setInput} validador={validaciones}/>
-                          )
-                      })
-
-                      } */}
+            <br />
+            <br />
+            {
+            input.types?.map((e) => {
+              return (
+                <div className="typesSelect" key={e}>
+                  <p className="pTypes">{e}</p>
+                  <button
+                    className="btnDelete"
+                    onClick={() => {
+                      handleDelete(e);
+                    }}
+                  >
+                    x
+                  </button>
+                </div>
+              );})}
+                     
 
             <p>{error.types}</p>
 

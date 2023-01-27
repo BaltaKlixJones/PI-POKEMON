@@ -4,9 +4,11 @@
 import React from "react";
 import "./Card.css"
 
+
 export default function Card({name, img, types}) {
     return(
         <div className="cardPoke">
+            
             <div className="cardPoke-title">
                 <h4>{name}</h4>
             </div>
