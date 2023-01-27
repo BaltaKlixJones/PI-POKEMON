@@ -59,7 +59,7 @@ router.post("/create", async (req, res) => {
   const { name, hp, attack, defense, speed, img, height, weight, types } =
     req.body;
 
-  if (!name || !hp || !attack || !defense || !speed || !height || !weight)
+  if (!name || !hp || !attack || !defense || !speed || !height || !weight || !img)
     res.status(400).json({ msg: "Faltan datos" }); 
   try {
     const obj = {
@@ -88,10 +88,8 @@ const tipos = await Type.findAll({
 });
 nvoPokemon.addType(tipos);
 
-// nvoPokemon.addType(types); 
-// const createdPokemon = Pokemon.findByPk(nvoPokemon.id, {
-  //   include: [{ model: Type }],
-  // });
+
+  console.log(img)
   
   nvoPokemon
   ? res.status(200).send("Pokemon creado con exito")
