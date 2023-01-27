@@ -36,7 +36,9 @@ export default function Details(props) {
         {pokemon.length > 0 ? (
           <div lassName="card">
             <h2>Pokemon Nº{pokemon[0].id}</h2>
-            <img  className="img" src={pokemon[0].img} alt="pokemonimg" />
+
+            <img  className="img" src={pokemon[0].img} alt="No se pudo cargar la imagen" />:      
+          
             <h2 className="boxTypes" >Type: {" " + pokemon[0].types + " "}</h2>
             <p className="boxContainer" >
               <div>

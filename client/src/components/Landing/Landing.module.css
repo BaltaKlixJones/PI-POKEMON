@@ -1,12 +1,9 @@
 .div{
-    background-image: url('http://www.solofondos.com/wp-content/uploads/2016/01/criaturas-pokemon.jpg');
-    /* background-image: url('http://38.media.tumblr.com/12e26738a6bfb9c17fe6279569936d72/tumblr_mhm4dmVxov1s3tiylo1_500.gif'); */
-    /* background-image: url('https://w0.peakpx.com/wallpaper/1013/553/HD-wallpaper-pokemon-red-pokemon-pikachu.jpg'); */
-    /* background-image: url('https://w0.peakpx.com/wallpaper/359/879/HD-wallpaper-pokemon-eevee-pokemon-eeveelutions-espeon-pokemon-flareon-pokemon-jolteon-pokemon-leafeon-pokemon-sylveon-pokemon-umbreon-pokemon-vaporeon-pokemon.jpg'); */
-    /* background-image: url('https://w0.peakpx.com/wallpaper/293/155/HD-wallpaper-pokemon-pokemons.jpg'); */
+  top: 0%;
+    background-image: url('https://fondosmil.com/fondo/14707.png');
     height: 900px;
     background-position: center;
-    /* background-repeat: no-repeat; */
+    background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }

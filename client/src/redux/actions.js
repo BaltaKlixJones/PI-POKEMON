@@ -9,6 +9,7 @@ export const FILTER_TYPE = 'FILTER_TYPE'
 export const ORDER_A_Z = 'ORDER_A_Z'
 export const FILTER_API_DB = "FILTER_API_DB"
 export const CURRENT_PAGE = "CURRENT_PAGE"
+// export const DELETE = "DELETE"
 
 
 
@@ -95,6 +96,19 @@ export function currentPage(payload){
       payload
   }
 }
+
+// export const deletePokemon = (pokemonId)=> {
+//   return async function (dispatch) {
+//     try {
+//       await axios.delete(`/delete/${pokemonId}`);
+//       return dispatch({
+//         type: DELETE,
+//       });
+//     } catch (error) {
+//       console.log("No puedo eliminar el pokemon", error);
+//     }
+//   };
+// }
 
 
 

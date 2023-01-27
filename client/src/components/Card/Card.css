@@ -17,17 +17,19 @@
   */
   
   .cardPoke {
-    background-color: rgba(255, 255, 255, 0.623);
+    background-color: rgba(123, 127, 134, 0.696);
     border-radius: 10px;
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
     overflow: hidden;
     width: 300px;
-    height: 350px;
+    height: 360px;
     padding: 5%;
+    text-decoration: none;
     
   }
   
-  
+
+
   .imgCard {
     display: flex;
     -webkit-filter: drop-shadow(5px 5px 5px #222);
@@ -46,15 +48,18 @@
 }
 
 .cardPoke .cardPoke-title {
-    font-size: 24px;
+  text-transform: uppercase;
+    font-size: 20px;
     font-weight: bold;
-    padding: 20px;
+    color: white;
+    text-decoration: none;
 }
 
 .cardPoke .cardPoke-description {
-    font-size: 18px;
-    padding: 20px;
-    text-align: justify;
+    font-size: 17px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
 }
 
 .cardPoke .cardPoke-button {
@@ -64,6 +69,7 @@
     padding: 10px 20px;
     text-align: center;
     transition: background-color 0.2s;
+    text-decoration: none;
 }
 
 .cardPoke .cardPoke-button:hover {

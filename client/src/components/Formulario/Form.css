@@ -1,28 +1,58 @@
+.form{
+  background-image: url('https://www.molaunhuevo.com/wp-content/uploads/fondo-pokemon.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: max-content;
+}
+
+
 .conteiner {
     width: 500px; /* para darle un ancho al formulario */
     margin: 0 auto; /* para centrarlo en la página */
     padding: 20px; /* para darle un poco de espacio alrededor */
+    
+    text-decoration: none;
   }
   
   .titulo {
     display: block; /* para que cada label ocupe toda la línea */
     margin-bottom: 10px; /* para separar cada label del siguiente */
-    background-color: red;
+    background-color: rgb(59, 124, 231);
   }
   
-  input, button {
-    width: 100%; /* para que ocupen todo el ancho del formulario */
+  .input {
+    width: 95%; /* para que ocupen todo el ancho del formulario */
     padding: 10px; /* para darles un poco de espacio */
     margin-bottom: 20px; /* para separarlos entre sí */
   }
   
   .input {
-    border: 1px solid #ccc; /* para darles un borde */
+    border: 1px solid rgb(170, 159, 159); /* para darles un borde */
   }
   
-.vovler {
-    background-color: #333; /* para darle un color de fondo */
-    color: white; /* para que el texto sea blanco */
-    border: none; /* para quitarles el borde */
-    cursor: pointer; /* para que el cursor cambie al pasar por encima */
+  .back-button {
+    background-color: rgb(141, 143, 144); /* color de fondo del botón */
+    color: rgb(251, 251, 251); /* color del texto */
+    padding: 8px 16px; /* espaciado interior del botón */
+    border-radius: 4px; /* bordes redondos */
+    border: none; /* sin bordes */
+    font-size: 14px; /* tamaño de la fuente */
+    cursor: pointer; /* cursor en forma de mano al pasar el mouse */
+    transition: background-color 0.2s ease; /* transición suave al cambiar el color de fondo */
+    display: flex; /* para alinear el icono y el texto */
+    align-items: center; /* para centrar el icono y el texto */
+    text-decoration: none;
   }
+  
+  .back-button svg {
+    margin-right: 8px; /* espaciado entre el icono y el texto */
+    fill: #fff; /* color del icono */
+    text-decoration: none;
+  }
+  
+  .back-button:hover {
+    background-color: #444; /* color de fondo al pasar el mouse */
+  }
+  

@@ -8,7 +8,7 @@ export default function Landing(){
     return(
         
         <div className={`${style.div}`}>
-            <h1 className={`${style.pokeTit}`}>Bienvenidos a</h1>
+            <h1 className={`${style.pokeTit}`}>Bienvenidos a POKEMON!</h1>
             
             <Link to={'/home'}> 
             <button className={`${style.pokeButton}`} role="button">

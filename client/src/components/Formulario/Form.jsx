@@ -118,13 +118,10 @@
 // -------------------------------------------------------------
 // -------------------------------------------------------------
 
-
 // import React, { useState, useEffect } from "react";
 // import { Link, useHistory } from "react-router-dom";
 // import { createPoke, getTypes } from "../../redux/actions";
 // import { useDispatch, useSelector } from "react-redux";
-
-
 
 // export default function PokemonCreate() {
 //   const dispatch = useDispatch();
@@ -146,7 +143,6 @@
 //     types: [],
 //   });
 
-  
 //   function handleChange(e) {
 //     setInput({
 //       ...input,
@@ -175,7 +171,7 @@
 //     else if (!input.img) return alert("Debe colocar una dirección para poder cargar la imagen");
 //     else if (!input.types.length) return alert("Debe colocar al menos un tipo de Pokemon");
 //     dispatch(createPoke(input));
-    
+
 //     // alert("¡El pokemon fue creado con éxito!");
 
 //     setInput({
@@ -191,7 +187,6 @@
 //     });
 //     history.push("/");
 //   }
-
 
 //   useEffect(() => {
 //     dispatch(getTypes());
@@ -301,7 +296,6 @@
 
 //         </select> */}
 
-    
 //             {/* <select onChange={(e) => handleSelect(e)}>
 //             <option value="all">Todos</option>
 //             <option value="normal">Normal</option>
@@ -328,9 +322,9 @@
 //         </div>
 
 //         <br />
-       
+
 //         <button type="submit"> Crear Pokemon </button>
-       
+
 //       </form>
 //     </div>
 //   );
@@ -341,7 +335,6 @@
 // ----------------------------------------
 // ----------------------------------------
 // ----------------------------------------
-
 
 // import React, { useEffect, useState } from "react";
 // import { useHistory } from "react-router-dom";
@@ -592,8 +585,6 @@
 //           })}
 //         </select>
 
-
-
 //         <div className="form-types">
 //         {input.types.map((el) => el + " ")}
 //         </div>
@@ -611,206 +602,191 @@
 // ---------------------------------------------------
 // ---------------------------------------------------
 
-
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTypes, createPoke } from '../../redux/actions'
-import { Link, useHistory } from 'react-router-dom';
+import { getTypes, createPoke } from "../../redux/actions";
+import { Link, useHistory } from "react-router-dom";
 
-// import "./Form.css" 
+import "./Form.css";
 
-
-export default function CreatePokemon(){
-
-  const history = useHistory()
+export default function CreatePokemon() {
+  const history = useHistory();
 
   let [input, setInput] = useState({
-      name: '',
-      hp: '',
-      attack: '',
-      defense: '',
-      speed: '',
-      height: '',
-      weight: '',
-      image: '',
-      types: []
-  })
+    name: "",
+    hp: "",
+    attack: "",
+    defense: "",
+    speed: "",
+    height: "",
+    weight: "",
+    img: "",
+    types: [],
+  });
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const tipos = useSelector(state => state.types)
+  const tipos = useSelector((state) => state.types);
 
+  let [error, setError] = useState({});
 
-  let [error, setError] = useState({})
+  let [disEna, setDisEna] = useState(false);
 
-  let [disEna, setDisEna] = useState(false)
+  useEffect(() => {
+    dispatch(getTypes());
+  }, [dispatch]);
 
-  useEffect(()=>{
-      dispatch(getTypes())
-  },[dispatch])
+  const handleOnChange = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+    // setError(
+    //     validaciones({...input, [e.target.name]: e.target.value})
+    // );
 
+    // handleDisable(validaciones({...input, [e.target.name]: e.target.value}))
 
-  const handleOnChange= (e)=>{
+    validaciones({ ...input, [e.target.name]: e.target.value });
+  };
 
-      setInput({...input, [e.target.name]: e.target.value});
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    dispatch(createPoke(input));
+
+    setInput({
+      name: "",
+      hp: "",
+      attack: "",
+      defense: "",
+      speed: "",
+      height: "",
+      weight: "",
+      img: "",
+      types: [],
+    });
+
+    alert("¡Pokemon creado con Éxito!");
+    history.push("/home");
+  };
+
+  const handleTypes = (e) => {
+    if (!input.types.includes(e.target.value)) {
+      setInput({ ...input, types: [...input.types, e.target.value] });
       // setError(
-      //     validaciones({...input, [e.target.name]: e.target.value})
+      //     validaciones({...input, types: [input.types, e.target.value]})
       // );
 
-      // handleDisable(validaciones({...input, [e.target.name]: e.target.value}))
+      // handleDisable(validaciones({...input, types: [input.types, e.target.value]}))
+      validaciones({ ...input, types: [...input.types, e.target.value] });
+    } else {
+      alert("El tipo ya fue seleccionado.");
+    }
+  };
 
-      validaciones({...input, [e.target.name]: e.target.value})
-      
-  }
+  const validaciones = (pokeValidar) => {
+    let validError = {};
 
-  const handleSubmit = (e)=> {
-      e.preventDefault()
-        //   axios
-        //   .post("http://localhost:3001/pokemons", setInput)
-        //   .then(res => alert(res))
-          dispatch(createPoke(input))
-          
-          setInput({
-              name: '',
-              hp: '',
-              attack: '',
-              defense: '',
-              speed: '',
-              height: '',
-              weight: '',
-              image: '',
-              types: [] 
-             
-          })
-          
-      alert("¡Pokemon creado con Éxito!")
-      history.push('/home')
-
-  }
-
-
-  const handleTypes = (e) =>{
-      if(!input.types.includes(e.target.value)){
-          
-          setInput({...input, types: [...input.types, e.target.value]})
-          // setError(
-          //     validaciones({...input, types: [input.types, e.target.value]})
-          // );
-  
-          // handleDisable(validaciones({...input, types: [input.types, e.target.value]}))
-          validaciones({...input, types: [...input.types, e.target.value]})
-      
-      }else{
-          alert("El tipo ya fue seleccionado.")
+    if (!pokeValidar.name) {
+      validError.name = "Debe tener un nombre";
+    } else {
+      if (/\s/.test(pokeValidar.name)) {
+        validError.name = "No se permiten espacios";
       }
-  }
+      if (/[0-9]/.test(pokeValidar.name)) {
+        validError.name = "Solo letras por favor";
+      }
+      if (/\W/.test(pokeValidar.name)) {
+        validError.name = "No se permiten carácteres especiales";
+      }
+    }
+    if (!pokeValidar.attack) {
+      validError.attack = "Necesita tener ataque";
+    } else {
+      if (pokeValidar.attack > 255) {
+        validError.attack = "El ataque no puede ser mayor a 255";
+      } else if (pokeValidar.attack < 1) {
+        validError.attack = "No puede ser un numero negativo";
+      }
+    }
+    if (!pokeValidar.defense) {
+      validError.defense = "Necesita una defensa";
+    } else {
+      if (pokeValidar.defense > 255) {
+        validError.defense = "La defensa no puede ser mayora a 255";
+      } else if (pokeValidar.defense < 1) {
+        validError.defense = "Tiene que ser mayor a 1 ";
+      }
+    }
+    if (!pokeValidar.speed) {
+      validError.speed = "Necesita velocidad";
+    } else {
+      if (pokeValidar.speed > 255) {
+        validError.speed = "La velocidad no puede ser mayora a 255";
+      } else if (pokeValidar.speed < 1) {
+        validError.speed = "Debe ser mayor a 1";
+      }
+    }
+    if (!pokeValidar.hp) {
+      validError.hp = "Debe tener vida";
+    } else {
+      if (pokeValidar.hp > 255) {
+        validError.hp = "La vida no puede ser mayora a 255";
+      } else if (pokeValidar.hp < 1) {
+        validError.hp = "La vida debe ser mayor a 1";
+      }
+    }
+    if (!pokeValidar.height) {
+      validError.height = "Algo esta mal ...";
+    } else {
+      if (pokeValidar.height > 40) {
+        validError.height = "La altura no puede superar los 40 metros";
+      } else if (pokeValidar.height < 1) {
+        validError.height = "Algo esta mal ...";
+      }
+    }
+    if (!pokeValidar.weight) {
+      validError.weight = "Algo esta mal ...";
+    } else {
+      if (pokeValidar.weight > 1000) {
+        validError.weight = "El peso no puede ser superior a 1000";
+      } else if (pokeValidar.weight < 1) {
+        validError.weight = "Algo esta mal ...";
+      }
+    }
+    if (pokeValidar.img) {
+      if (
+        !/(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/.test(
+          pokeValidar.img
+        )
+      ) {
+        validError.img = "El link de la imagen debe ser una URL";
+      }
+    } else {
+    //   let arrImage = [];
 
-  const validaciones = (pokeValidar)=>{
+    //   let setIndex = Math.round(Math.random() * 4);
 
-      let validError = {}
-  
-      if(!pokeValidar.name){
-          validError.name = "Debe tener un nombre"
-      } else{
-         if(/\s/.test(pokeValidar.name)){
-          validError.name = 'No se permiten espacios'
-         }
-         if(/[0-9]/.test(pokeValidar.name)){
-          validError.name = "Solo letras por favor"
-         }
-         if(/\W/.test(pokeValidar.name)){
-          validError.name = 'No se permiten carácteres especiales'
-         }
-      }
-      if(!pokeValidar.attack){
-          validError.attack = 'Necesita tener ataque'
-      }else{
-          if(pokeValidar.attack > 255){
-              validError.attack = "El ataque no puede ser mayor a 255"
-          } else if(pokeValidar.attack < 1){
-              validError.attack = 'No puede ser un numero negativo'
-          }
-      }
-      if(!pokeValidar.defense){
-          validError.defense = 'Necesita una defensa'
-      }else{
-          if(pokeValidar.defense > 255){
-              validError.defense = "La defensa no puede ser mayora a 255"
-          } else if(pokeValidar.defense < 1){
-              validError.defense = 'Tiene que ser mayor a 1 '
-          }
-          
-      }
-      if(!pokeValidar.speed){
-          validError.speed = 'Necesita velocidad'
-      }else{
-          if(pokeValidar.speed > 255){
-              validError.speed = "La velocidad no puede ser mayora a 255"
-          } else if(pokeValidar.speed < 1){
-              validError.speed = 'Debe ser mayor a 1'
-          }
-   
-      }
-      if(!pokeValidar.hp){
-          validError.hp = 'Debe tener vida'
-      }else{
-          if(pokeValidar.hp > 255){
-              validError.hp = "La vida no puede ser mayora a 255"
-          } else if(pokeValidar.hp < 1){
-              validError.hp = 'La vida debe ser mayor a 1'
-          }
-      }
-      if(!pokeValidar.height){
-          validError.height = 'Algo esta mal ...'
-      }else{
-          if(pokeValidar.height > 40){
-              validError.height = "La altura no puede superar los 40 metros"
-          } else if(pokeValidar.height < 1){
-              validError.height = 'Algo esta mal ...'
-          }
-      }
-      if(!pokeValidar.weight){
-          validError.weight = 'Algo esta mal ...'
-      }else{
-          if(pokeValidar.weight > 1000){
-              validError.weight = "El peso no puede ser superior a 1000"
-          } else if(pokeValidar.weight < 1){
-              validError.weight = 'Algo esta mal ...'
-          }
-      }
-      if(pokeValidar.image){
-          if (!/(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/.test(pokeValidar.image)){
-              validError.image = 'El link de la imagen debe ser una URL'
-          }
-  
-      }else{
-          let arrImage = []
+    //   pokeValidar.img = arrImage[setIndex];
+      setInput({ ...input, img: pokeValidar.img });
+    }
+    if (pokeValidar.types.length === 0 || pokeValidar.types.length > 1) {
+      validError.types = "Ponle un tipo";
+    }
 
-          let setIndex = Math.round(Math.random() * 4)
+    setError(validError);
+    handleDisable(validError);
+  };
 
-          pokeValidar.image = arrImage[setIndex]
-          setInput({...input, image: pokeValidar.image})
+  const handleDisable = (error) => {
+    // if(!error.name && !error.attack && !error.image && !error.defense && !error.height && !error.weight && !error.speed && !error.hp){
+    //     setDisEna(true)
+    // }
+    // else{
+    //     setDisEna(false)
+    // }
 
-      }
-      if(pokeValidar.types.length === 0 || pokeValidar.types.length > 1){
-          validError.types = 'Ponle un tipo'
-      }
-      
-      setError(validError)
-      handleDisable(validError)
-  }
-
-  const handleDisable = (error)=>{
-
-      // if(!error.name && !error.attack && !error.image && !error.defense && !error.height && !error.weight && !error.speed && !error.hp){
-      //     setDisEna(true)
-      // }
-      // else{
-      //     setDisEna(false)
-      // }
-
-     if(error?.name === undefined &&
+    if (
+      error?.name === undefined &&
       error?.attack === undefined &&
       error?.defense === undefined &&
       error?.speed === undefined &&
@@ -818,104 +794,174 @@ export default function CreatePokemon(){
       error?.height === undefined &&
       error?.weight === undefined &&
       error?.types === undefined
-      ){
-          setDisEna(true)
-     }else{
-      setDisEna(false)
-     }
+    ) {
+      setDisEna(true);
+    } else {
+      setDisEna(false);
+    }
+  };
 
-  }
+  return (
+    <div className="form">
+      <div className="container">
+      <button class="back-button">
+          <Link to="/home">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+            </svg >
+            Volver atrás
+          </Link>
+        </button>
+        <h3>¡Crea tu Pokemon!</h3>
+        
+        <br />
+        <form onSubmit={(e) => handleSubmit(e)} id={"formulario"}>
+          <div className="input">
+            <label>Nombre: </label>
+            <input
+              type={"text"}
+              placeholder={"Ponle un nombre!"}
+              name={"name"}
+              value={input.name}
+              onChange={(e) => handleOnChange(e)}
+            />
+            <p>{error.name}</p>
+            <br />
+          </div>
 
-
-  return(
-      <div >
-      <div className='titulo' >
-          <h3  >¡Crea tu Pokemon!</h3>
-          <br/>
-      <form onSubmit={ e => handleSubmit(e)} id={'formulario'}> 
-      
-      <div className='input'>
-          <label>Nombre: </label>
-              <input type={'text'} placeholder={'Ponle un nombre!'} name={'name'} value={input.name} onChange={ (e) => handleOnChange(e)}/>
-              <p>{error.name}</p>
-          <br/>
-      </div>
-      
-      <div className='input'>
-              <label>Imagen: </label>
-              <label><input  type={'text'} placeholder={'Pon una url!'} name={'image'} value={input.image} onChange={ (e) => handleOnChange(e)}/> url </label>
-              <br/>
-              <br/>
-              <br/>
-              <img style={{height:"400px", width:"400px"}} src={input.image? input.image : ""} alt=''></img>
-              <p>{error.image}</p>
-              {/* {
+          <div className="input">
+            <label>Imagen: </label>
+            <label>
+              <input
+                type={"text"}
+                placeholder={"Pon una url!"}
+                name={"img"}
+                value={input.img}
+                onChange={(e) => handleOnChange(e)}
+              />{" "}
+              url{" "}
+            </label>
+            <br />
+            <br />
+            <br />
+            <img
+              style={{ height: "400px", width: "400px" }}
+              src={
+                input.img
+                  ? input.img
+                  : "https://wallpaperaccess.com/full/4167709.gif"
+              }
+              alt=""
+            ></img>
+            <p>{error.img}</p>
+            {/* {
                   input.image? <p>Este es un Pokemon de ejemplo</p> : <p>¿Quién es ese pokemon?</p>
               } */}
-           </div>
-          
-          
-          <div  className='atributos'>
-             
-              <label>Ataque: </label>
-              {/* <input type={'number'} placeholder={'Ej: 40'} name={'attack'} value={input.attack} onChange={ (e) => handleOnChange(e)}/> */}
-              <input type={'range'} min='1' max='255' name={'attack'} value={input.attack} onChange={ (e) => handleOnChange(e)}/>
-              <p>{input.attack}</p>
-              <p>{error.attack}</p>
-          <br/>
-
-              <label>Defensa: </label>
-              {/* <input type={'number'} placeholder={'Ej: 65'} name={'defense'} value={input.defense} onChange={ (e) => handleOnChange(e)}/> */}
-              <input type={'range'} min='1' max='255' name={'defense'} value={input.defense} onChange={ (e) => handleOnChange(e)}/>
-              <p>{input.defense}</p>
-              <p>{error.defense}</p>
-
-          <br/>
-
-              <label>Velocidad: </label>
-              {/* <input type={'number'} placeholder={'Ej: 55'} name={'speed'} value={input.speed} onChange={ (e) => handleOnChange(e)}/> */}
-              <input type={'range'} min='1' max='255' name={'speed'} value={input.speed} onChange={ (e) => handleOnChange(e)}/>
-              <p>{input.speed}</p>
-              <p>{error.speed}</p>
-
-          <br/>
           </div>
-          <div  className='atributos2'>
 
-              <label>Vida: </label>
-              {/* <input type={'number'} placeholder={'Ej: 70'} name={'hp'} value={input.hp} onChange={ (e) => handleOnChange(e)}/> */}
-              <input type={'range'} min='1' max='255' name={'hp'} value={input.hp} onChange={ (e) => handleOnChange(e)}/>
-              <p>{input.hp}</p>
-              <p>{error.hp}</p>
+          <div className="atributos">
+            <label>Ataque: </label>
+            {/* <input type={'number'} placeholder={'Ej: 40'} name={'attack'} value={input.attack} onChange={ (e) => handleOnChange(e)}/> */}
+            <input
+              type={"range"}
+              min="1"
+              max="255"
+              name={"attack"}
+              value={input.attack}
+              onChange={(e) => handleOnChange(e)}
+            />
+            <p>{input.attack}</p>
+            <p>{error.attack}</p>
+            <br />
 
-          <br/>
-          
- 
-              <label>Peso: </label>
-              <label><input type={'number'} placeholder={'Entre 1 y 1000'} name={'weight'} value={input.weight} onChange={ (e) => handleOnChange(e)}/> kg </label>
-              <p>{error.weight}</p>
-       
-          <br/>
-        
-              <label>Altura: </label>
-              <label><input type={'number'} placeholder={'Entre 1 y 40'} name={'height'} value={input.height} onChange={ (e) => handleOnChange(e)}/> m </label>
-              <p>{error.height}</p>
-       
-          <br/>
-         
-           </div>
-          <div className='tipos'>
-              <label>Tipos: </label>
-              <select onChange={ (e) => handleTypes(e)}>
-                  {
-                      tipos?.map((ty) =>{
-                          return(
-                              <option name={ty.name} value={ty.name}>{ty.type}</option>
-                          )
-                      })
-                  }
-              </select>
-{/*                  
+            <label>Defensa: </label>
+            {/* <input type={'number'} placeholder={'Ej: 65'} name={'defense'} value={input.defense} onChange={ (e) => handleOnChange(e)}/> */}
+            <input
+              type={"range"}
+              min="1"
+              max="255"
+              name={"defense"}
+              value={input.defense}
+              onChange={(e) => handleOnChange(e)}
+            />
+            <p>{input.defense}</p>
+            <p>{error.defense}</p>
+
+            <br />
+
+            <label>Velocidad: </label>
+            {/* <input type={'number'} placeholder={'Ej: 55'} name={'speed'} value={input.speed} onChange={ (e) => handleOnChange(e)}/> */}
+            <input
+              type={"range"}
+              min="1"
+              max="255"
+              name={"speed"}
+              value={input.speed}
+              onChange={(e) => handleOnChange(e)}
+            />
+            <p>{input.speed}</p>
+            <p>{error.speed}</p>
+
+            <br />
+          </div>
+          <div className="atributos2">
+            <label>Vida: </label>
+            {/* <input type={'number'} placeholder={'Ej: 70'} name={'hp'} value={input.hp} onChange={ (e) => handleOnChange(e)}/> */}
+            <input
+              type={"range"}
+              min="1"
+              max="255"
+              name={"hp"}
+              value={input.hp}
+              onChange={(e) => handleOnChange(e)}
+            />
+            <p>{input.hp}</p>
+            <p>{error.hp}</p>
+
+            <br />
+
+            <label>Peso: </label>
+            <label>
+              <input
+                type={"number"}
+                placeholder={"Entre 1 y 1000"}
+                name={"weight"}
+                value={input.weight}
+                onChange={(e) => handleOnChange(e)}
+              />{" "}
+              kg{" "}
+            </label>
+            <p>{error.weight}</p>
+
+            <br />
+
+            <label>Altura: </label>
+            <label>
+              <input
+                type={"number"}
+                placeholder={"Entre 1 y 40"}
+                name={"height"}
+                value={input.height}
+                onChange={(e) => handleOnChange(e)}
+              />{" "}
+              m{" "}
+            </label>
+            <p>{error.height}</p>
+
+            <br />
+          </div>
+          <div className="tipos">
+            <label>Tipos: </label>
+            <select onChange={(e) => handleTypes(e)}>
+              {tipos?.map((ty) => {
+                return (
+                  <option name={ty.name} value={ty.name}>
+                    {ty.type}
+                  </option>
+                );
+              })}
+            </select>
+            {/*                  
                       {
                       input.types?.map(curr => {
                           return(
@@ -924,56 +970,58 @@ export default function CreatePokemon(){
                       })
                       
                       } */}
-                 
- 
-              <p>{error.types}</p>
-         
-          
-          <br/>
+
+            <p>{error.types}</p>
+
+            <br />
           </div>
-      <br/>
-          <br/>
-          <div className='btnCrear'>
-          <button disabled={!disEna && "disabled"} type={'submit'}><svg class="css-i6dzq1" stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-width="2" stroke="#942727" height="24" width="24" viewBox="0 0 24 24">
-      <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-  </svg>Crear Pokemon</button>
-      {
-  !disEna? <p>Revise todos los campos</p> : <p></p>
-  }
-      </div>
-      </form>
-      <br/>
-      
-      <div className='volver'>
+          <br />
+          <br />
+          <div className="btnCrear">
+            <button disabled={!disEna && "disabled"} type={"submit"}>
+              <svg
+                class="css-i6dzq1"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                fill="none"
+                stroke-width="2"
+                stroke="#942727"
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+              >
+                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+              </svg>
+              Crear Pokemon
+            </button>
+            {!disEna ? <p>Revise todos los campos</p> : <p></p>}
+          </div>
+        </form>
+        <br />
+
+        {/* <div className='volver'>
           <Link to= '/home'><button>
 <span>Volver</span>  
 </button></Link>
-      </div>
-      
-      </div>
-      </div>
-  )
+      </div> */}
 
-
-
+        
+      </div>
+    </div>
+  );
 }
 
-
-
 // ---------------------------------------------------
 // ---------------------------------------------------
 // ---------------------------------------------------
 // ---------------------------------------------------
 // ---------------------------------------------------
-
 
 // import React from "react";
 // import {useEffect, useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import {Link, useHistory} from "react-router-dom"
 // import { getPokemones, getTypes, createPoke } from "../../redux/actions";
-
-
 
 // function validate(input) {
 //     const errors = {}
@@ -1005,7 +1053,7 @@ export default function CreatePokemon(){
 //         types:[]
 //     });
 
-//     let btnDisabled= 
+//     let btnDisabled=
 //     !(
 //         input.name.length &&
 //         input.hp.length &&
@@ -1069,7 +1117,7 @@ export default function CreatePokemon(){
 
 //       const handleDeleteType = (e) => {
 //         setInput({
-//             ...input, 
+//             ...input,
 //             types:input.types.filter((t)=> t!== e)
 //         })
 //       }
@@ -1090,7 +1138,7 @@ export default function CreatePokemon(){
 //                 <img src="" alt="poke" className=""></img>
 //                 <div className="">Create your pokemon</div>
 //               </div>
-    
+
 //               <form onSubmit={(e) => handleSubmit(e)}>
 //                 <div className="">
 //                   <div className="">
@@ -1108,7 +1156,7 @@ export default function CreatePokemon(){
 //                         <div className="">{errors.name}</div>
 //                       )}
 //                     </div>
-    
+
 //                     <div>
 //                       <div>Hp:</div>
 //                       <input
@@ -1121,7 +1169,7 @@ export default function CreatePokemon(){
 //                       />
 //                       {errors.hp && <div className="">{errors.hp}</div>}
 //                     </div>
-    
+
 //                     <div>
 //                       <div>Attack:</div>
 //                       <input
@@ -1136,7 +1184,7 @@ export default function CreatePokemon(){
 //                         <div className="">{errors.attack}</div>
 //                       )}
 //                     </div>
-    
+
 //                     <div>
 //                       <div>Defense:</div>
 //                       <input
@@ -1151,7 +1199,7 @@ export default function CreatePokemon(){
 //                         <div className="">{errors.defense}</div>
 //                       )}
 //                     </div>
-    
+
 //                     <div>
 //                       <select
 //                         onChange={(e) => handleSelect(e)}
@@ -1174,7 +1222,7 @@ export default function CreatePokemon(){
 //                           );
 //                         })}
 //                       </select>
-    
+
 //                       <ul className="">
 //                         {input.types.map((t) => {
 //                           return (
@@ -1195,7 +1243,7 @@ export default function CreatePokemon(){
 //                       )}
 //                     </div>
 //                   </div>
-    
+
 //                   <div className="">
 //                     <div>
 //                       <div>Speed:</div>
@@ -1211,7 +1259,7 @@ export default function CreatePokemon(){
 //                         <div className="">{errors.speed}</div>
 //                       )}
 //                     </div>
-    
+
 //                     <div>
 //                       <div>
 //                         Height <small>(cm)</small>:
@@ -1225,7 +1273,7 @@ export default function CreatePokemon(){
 //                         className=""
 //                       />
 //                     </div>
-    
+
 //                     <div>
 //                       <div>
 //                         Weight <small>(kg)</small>:
@@ -1239,7 +1287,7 @@ export default function CreatePokemon(){
 //                         className=""
 //                       />
 //                     </div>
-    
+
 //                     <div>
 //                       <div>Image:</div>
 //                       <input
@@ -1254,7 +1302,7 @@ export default function CreatePokemon(){
 //                         <div className="">{errors.image}</div>
 //                       )}
 //                     </div>
-    
+
 //                     <button
 //                       type="submit"
 //                       disabled={btnDisabled}
@@ -1270,5 +1318,5 @@ export default function CreatePokemon(){
 //         </div>
 //       );
 //     }
-    
+
 //     export default CreatePokemonForm;

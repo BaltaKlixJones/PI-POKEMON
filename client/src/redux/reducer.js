@@ -9,6 +9,7 @@ import {
   GET_TYPES,
   FILTER_API_DB,
   ORDER_A_Z,
+  // DELETE
 } from "./actions";
 
 let initialState = {
@@ -95,6 +96,11 @@ export default function rootReducer(state = initialState, action) {
             ? aux.filter((c) => isNaN(c.id))
             : aux.filter((c) => !isNaN(c.id)),
       };
+      // case DELETE:
+      //   return {
+      //     ...state,
+      //     detail: action.payload,
+      //   };
     default:
       return state;
   }

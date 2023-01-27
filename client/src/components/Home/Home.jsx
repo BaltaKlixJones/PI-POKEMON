@@ -31,12 +31,10 @@ export default function Home(){
         }
 
     function handleTypesFilt(e){
-        // e.preventDefault()
+        e.preventDefault()
         dispatch(filterPokemonesbyType(e.target.value))
     }
-    // let arrEmojis = [
-    //     "hola"
-    // ]
+    
 
     return (
 
@@ -48,18 +46,32 @@ export default function Home(){
            <h5>Crear pokemon</h5>
            </div>
            </Link>
-           <select onChange={(e) => handleOrderAZ(e)}>
+           <Link to="/home">
+           <div className="containerRecarga">
+  <button className="reload-button" onClick={"location.reload()"} >
+    <i className="fas fa-sync-alt">INICIO</i>
+  </button>
+</div>
+</Link>
+
+
            
-                    <option value={'asc'}>A-Z</option>
-                    <option value={'desc'}>Z-A</option>
-                </select>
-                <select onChange={(e) => handleCreApi(e)}>
+           <h3>Filtrar por:</h3>
+           
+            <select className="btnOrdenar" onChange={(e) => handleOrderAZ(e)}>
+                <option value={'asc'}>A-Z</option>
+                <option value={'desc'}>Z-A</option>
+            </select>
+            
+            
+            <select className="btnCreados" onChange={(e) => handleCreApi(e)}>
                 <option value={'allPoke'}>Todos</option>
                 <option value={'apiPoke'}>API</option>
                 <option value={'dbPoke'}>Creados</option>
             </select>
+            
 
-            <select 
+            <select className="btnTipos"
             onChange={e => handleTypesFilt(e)}
             >
 
@@ -75,12 +87,12 @@ export default function Home(){
                 
             </select> 
             
-            <h1>Pokemones</h1>
+            <h1 className="pokemon-title">🔥 Pokemones 🔥</h1>
             <NavBar/>
             <br/>
             <div  >
                 
-            <Cards/>
+            <Cards />
             </div>
            
         </div>
