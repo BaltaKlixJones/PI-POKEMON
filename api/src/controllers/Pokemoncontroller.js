@@ -2,7 +2,7 @@ const { Pokemon, Type } = require("../db.js");
 const axios = require("axios");
 
 let getPokemonApi = async () => {
-  const url = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=50");
+  const url = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=60");
   let url2 = url.data.results.map((p) => axios.get(p.url));
   let info = [];
 
@@ -53,7 +53,7 @@ let pokeTMap = pokeDb.map(curr => {
         attack: curr.attack,
         defense: curr.defense,
         speed: curr.speed,
-        image: curr.image,
+        img: curr.img,
         types: curr.types.map(curr => curr.name)
     }
 })

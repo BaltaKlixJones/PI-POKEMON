@@ -59,18 +59,18 @@ router.post("/create", async (req, res) => {
   const { name, hp, attack, defense, speed, img, height, weight, types } =
     req.body;
 
-  if (!name || !hp || !attack || !defense || !speed || !height || !weight || !img)
+  if (!name || !hp || !attack || !defense || !speed || !height || !weight )
     res.status(400).json({ msg: "Faltan datos" }); 
   try {
     const obj = {
       name,
+      img,
       hp,
       attack,
       defense,
       speed,
       height,
       weight,
-      img,
       types,
     };
     const nvoPokemon = await Pokemon.create(obj);
