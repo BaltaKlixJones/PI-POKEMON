@@ -10,7 +10,8 @@ export const ORDER_A_Z = 'ORDER_A_Z'
 export const FILTER_API_DB = "FILTER_API_DB"
 export const CURRENT_PAGE = "CURRENT_PAGE"
 // export const DELETE = "DELETE"
-export const CLEAN_POKEMONS = "CLEAN_POKEMONS";
+export const FILTER_VIDA = "FILTER_VIDA";
+export const FILTER_ATTACK = "FILTER_ATTACK";
 
 
 
@@ -96,12 +97,21 @@ export function creApiFilt(payload){
   }
 }
 
-export function currentPage(payload){
+export function filterVida(payload){
   return{
-      type: "CURRENT_PAGE",
+      type: "FILTER_VIDA",
       payload
   }
 }
+
+export function filterAttack(payload) {
+  return{
+    type: "FILTER_ATTACK",
+    payload
+  }
+}
+
+
 
 // export const deletePokemon = (pokemonId)=> {
 //   return async function (dispatch) {

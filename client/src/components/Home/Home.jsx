@@ -1,7 +1,7 @@
 import React from "react";
 import Cards from "../Cards/Cards";
 import NavBar from "../NavBar/NavBar";
-import { getPokemones, filterPokemonesbyType, orderA_Z, getTypes, creApiFilt} from "../../redux/actions";
+import { getPokemones, filterPokemonesbyType, orderA_Z, getTypes, creApiFilt, filterVida, filterAttack} from "../../redux/actions";
 import {Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import {  useEffect } from "react";
@@ -12,7 +12,7 @@ import "./Home.css"
 
 export default function Home(){
         const dispatch = useDispatch()
-        // const allPokemons = useSelector((state) =>state.pokemones)
+        
 
         useEffect(()=>{
             dispatch(getTypes())
@@ -36,6 +36,15 @@ export default function Home(){
         dispatch(filterPokemonesbyType(e.target.value))
     }
     
+    function handleHp (e) {
+        dispatch(filterVida(e.target.value))   
+    }
+
+    function hanldeAttack(e) {
+        dispatch(filterAttack(e.target.value))
+
+
+    }
 
     return (
 
@@ -56,8 +65,8 @@ export default function Home(){
 </Link>
 
 
-           
            <h3 className="textFilter">Filtrar por:</h3>
+           <div className="filtrar">
            
             <select className="btnOrdenar" onChange={(e) => handleOrderAZ(e)}>
                 <option value={'asc'}>A-Z</option>
@@ -87,15 +96,30 @@ export default function Home(){
                 }
                 
             </select> 
+
+            <select className="btnTipos" onClick={(e) => hanldeAttack(e)} >
             
+            
+            <option value="descA">Ataque mayor a menor</option> 
+            <option value="ascA">Ataque menor a mayor</option> 
+            </select>
+
+            <select className="btnTipos" onChange={(e)=> handleHp(e)}>
+                <option value="All">Vida</option> 
+                <option value="hp60">Menor o igual a 60</option> 
+                <option value="vidaM">Mayor a 61</option> 
+
+            </select>
+            </div >
+            <div id={"home"}>
             <h1 className="pokemon-title">🔥 Pokemones 🔥</h1>
-            <NavBar/>
+            <NavBar/> 
             <br/>
-            <div  >
-                
-            <Cards />
+            
+               {<Cards /> ? <Cards /> : <h2>No hay nada para mostrar</h2>} 
+               </div>
            
-            </div>
+            
            
         </div>
     )

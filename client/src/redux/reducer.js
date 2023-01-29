@@ -9,7 +9,8 @@ import {
   GET_TYPES,
   FILTER_API_DB,
   ORDER_A_Z,
-  // CLEAN_POKEMONS
+  FILTER_VIDA,
+  FILTER_ATTACK
 } from "./actions";
 
 let initialState = {
@@ -59,11 +60,42 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         // pokemones: [...state.pokemones, action.payload],
       };
-      // case CLEAN_POKEMONS:
-      // return {
-      //   ...state,
-      //   pokemons: action.payload,
-      // };
+      case FILTER_ATTACK :
+        let orderAttack = [...state.allPokemons]
+        let pokeAttack = action.payload === 'ascA' ? orderAttack.sort((a,b)=> {
+          if (a.attack > b.attack) {
+            return 1
+          } else if (a.attack < b.attack) {return -1}
+          else {return 0}
+        }) :
+        orderAttack.sort((a,b)=> {
+          if (a.attack < b.attack) {
+            return 1
+          }else if (a.attack > b.attack) {return -1}
+          else {return 0}
+        })
+        return {
+          ...state,
+          pokemones: pokeAttack 
+        }
+
+      
+
+      case FILTER_VIDA :
+        let vidaPoke = [...state.allPokemons]
+        let vida60 = vidaPoke.filter((v) => {
+          if (v.hp < 61) return v 
+        })
+        let vidaMayor = vidaPoke.filter((vM)=> {
+          if (vM.hp > 61) return vM
+        })
+        return {
+          ...state,
+          pokemones:  action.payload === "All" ? vidaPoke : (action.payload === "hp60" ? vida60 : vidaMayor)
+
+           
+        }
+
     case ORDER_A_Z:
       let ordName = [...state.allPokemons];
       let pokeByName =

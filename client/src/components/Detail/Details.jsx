@@ -35,10 +35,11 @@ export default function Details(props) {
       <div className="container">
         {pokemon.length > 0 ? (
           <div lassName="card">
-            <h2>Pokemon Nº{pokemon[0].id}</h2>
+            <h2>IDº {pokemon[0].id}</h2>
           {pokemon[0].img? 
-            <img  className="img" src={pokemon[0].img} alt="No se pudo cargar la imagen" />:  
-            <img className="img" src={"https://thumbnail.imgbin.com/12/24/23/imgbin-pok-mon-x-and-y-espurr-pok-mon-go-umbreon-nothing-grows-here-27nD41GQcfxgSbtRH8sy9uyqB_t.jpg"} alt="no hay imagen"/>
+            <img  className="img" src={pokemon[0].img} alt="No se pudo cargar la imagen" /> :  
+            
+            <img className="img" src={"https://cdn.memegenerator.es/descargar/31466993"} alt="no hay imagen"/>
           }    
           
             <h2 className="boxTypes" >Type: {" " + pokemon[0].types + " "}</h2>

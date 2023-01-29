@@ -1,9 +1,12 @@
-import React, { useEffect } from "react"; // SIMULA LOS ESTADOS DE VIDA DEL COMPONENTE
+import React, { useEffect, useState } from "react"; // SIMULA LOS ESTADOS DE VIDA DEL COMPONENTE
 import { useSelector, useDispatch } from "react-redux"; //HOOK. SELECCIONA DESDE NUESTRO STORE UNO DE LOS ESTADOS
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 import { getPokemones } from "../../redux/actions";
 import "./Cards.css";
+import Loading from "../Loading/Loading";
+import Paginado from "../Paginado/Paginado";
+
 
 
 export default function Cards() {
@@ -23,21 +26,51 @@ export default function Cards() {
   //   const card = [...statePoke]
   //   card.splice(e.statePoke)
   // }
+ 
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pokesPerPage, setPokesPerPage] = useState(15);
+
+  const indexOfLastPokes = currentPage * pokesPerPage; //15
+  const indexOfFirstPoke = indexOfLastPokes - pokesPerPage; //0
+  const currentPokes = statePoke.slice(indexOfFirstPoke, indexOfLastPokes);
   
-  
+  const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+
   return (
     <>
+      
+      <Paginado
+      currentPage={currentPage}
+        pokesPerPage={pokesPerPage}
+        allPokemones={statePoke.length}
+        paginado={paginado}
+      />
+       <br />
+
       <div className="cards">
-        {statePoke.length > 0 ? (
-          statePoke.map((p) => (
-            <Link key={p.id} to={`/details/${p.id}`}>
-              <Card name={p.name} img={p.img} types={p.types} /> <br />
-            </Link>
+        {
+        !currentPokes.length  ? (
+              <div >
+              <div >
+              <Loading/>
+              </div>
+              </div>
+          ) : ( 
+            currentPokes.map((p) => (
              
-             ))
-             ) : (
-               <h2>Cargando...</h2>
-               )}
+                 <Link className="cardDetail" key={p.id} to={`/details/${p.id}`}>
+                   {<Card/> ? <Card  name={p.name} img={p.img} types={p.types} /> : <Loading/>}
+                   <br />
+                 </Link>
+                
+                  ))
+               )
+               
+               }
       </div>
     </>
   );

@@ -1,65 +1,52 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import './Paginado.css'
-import { currentPage } from "../../redux/actions";
+import "./Paginado.css"
 
 
+const Paginado = ({ pokesPerPage, allPokemones, paginado, currentPage }) => {
+  const pageNumber = [];
 
-export default function Paginado({pokePage, allPokes}){
-    
-    const dispatch = useDispatch()
-    const page = useSelector((state)=> state.currPage)
-    const numPage = []
+  for (let i = 0; i <= Math.ceil(allPokemones / pokesPerPage); i++) {
+    pageNumber.push(i + 1);
+  }
 
-    // let indexPage = numPage.indexOf(page)
-    
-    let total = Math.ceil(allPokes/pokePage)
-    
-    
-    for(let i = 1; i <= Math.ceil(total); i++){
-        numPage.push(i)
-    }
-    
-    // Estableciendo paginado bonito
+  const handlePrev = (currentPage)=>{
+    if(currentPage !== 1) paginado(currentPage - 1) 
+  }
 
-    let indexMedPage = numPage.indexOf(page)
+  const handleNext = (currentPage)=>{
+    if(currentPage !== 7) paginado(currentPage + 1) 
+  }
 
-    let newPages = 0
-
-    if(indexMedPage === 0 || indexMedPage === 1){
-
-        newPages = numPage.slice(0, 5)
-
-    }else if(indexMedPage === (total - 2) || indexMedPage === (total - 1)){
-
-        newPages = numPage.slice(total - 5, total)
-
-    }else{
-    
-        let separDes = indexMedPage + 3
-        let separAnt = indexMedPage - 2
-    
-        newPages = numPage.slice(separAnt, separDes)
+  pageNumber.pop();
+ 
+  return (
+    <div className="pag_div_externo">
+        <div className="paginado">
+    {currentPage !== 1 ?
+      <button className="prevBtn" key="prev" onClick={() => handlePrev(currentPage)}> Anterior </button>
+      : ""
     }
 
-    return(
-    <div id={'pag_div_externo'}>
-            <div id={'pag_div_botones'}>
-
-                    <button id={'prevB'} onClick={(e) => dispatch(currentPage(page - 1))} disabled={page === 1? true: false}>Prev</button>
-                {newPages && newPages.map(number => (
-
-                    <button id={page === number? 'selected' : 'buttonP'} onClick={()=> dispatch(currentPage(number))}>{number}</button>
-                    
-                
-                ))}
-
-                    <button id={'nextB'} onClick={(e) => dispatch(currentPage(page + 1))} disabled={page === total? true: false}>Next</button>
-            
+      {pageNumber &&
+        pageNumber.map((number) => {
+          return (
+            <div className="numbered-buttons" key={number}>
+              <button className={`${"number-button"} ${
+      currentPage === number ? "number-button-focus" : ""
+    }`} onClick={() => paginado(number)}>
+                {number}
+              </button>
             </div>
+          );
+        })}
+        {currentPage !== Math.ceil(allPokemones / pokesPerPage)? 
+      <button className="nextBtn" key="next" onClick={() => handleNext(currentPage)}>Siguiente</button> :
+      ""
+    }
+    
     </div>
+    </div>
+  );
+};
 
-    )    
-
-}
+export default Paginado;
