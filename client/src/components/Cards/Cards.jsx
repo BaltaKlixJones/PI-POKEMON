@@ -61,7 +61,7 @@ export default function Cards() {
               
                  <Link className="cardDetail" key={p.id} to={`/details/${p.id}`}>
                   <Card  name={p.name} img={p.img} types={p.types} />  
-                   <br />
+                   
                   
                  </Link>
                  

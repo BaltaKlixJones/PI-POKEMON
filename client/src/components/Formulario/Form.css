@@ -56,69 +56,69 @@
 
   
   .titulo {
-    display: block; /* para que cada label ocupe toda la línea */
-    margin-bottom: 10px; /* para separar cada label del siguiente */
+    display: block; 
+    margin-bottom: 10px; 
     background-color: rgb(59, 124, 231);
   }
   .tipos {
-    width: 95%; /* para que ocupen todo el ancho del formulario */
-    padding: 10px; /* para darles un poco de espacio */
-    margin-bottom: 20px; /* para separarlos entre sí */
+    width: 95%; 
+    padding: 10px; 
+    margin-bottom: 20px; 
     background-color: rgba(154, 152, 152, 0.485)
   }
   
   .input {
-    width: 95%; /* para que ocupen todo el ancho del formulario */
-    padding: 10px; /* para darles un poco de espacio */
-    margin-bottom: 20px; /* para separarlos entre sí */
+    width: 95%; 
+    padding: 10px; 
+    margin-bottom: 20px; 
     background-color: rgba(154, 152, 152, 0.485)
   }
 .atributos {
-  width: 95%; /* para que ocupen todo el ancho del formulario */
-    padding: 10px; /* para darles un poco de espacio */
-    margin-bottom: 20px; /* para separarlos entre sí */
+  width: 95%; 
+    padding: 10px; 
+    margin-bottom: 20px; 
     background-color: rgba(154, 152, 152, 0.485)
 }
 
   .atributos2 {
-    width: 95%; /* para que ocupen todo el ancho del formulario */
-    padding: 10px; /* para darles un poco de espacio */
-    margin-bottom: 20px; /* para separarlos entre sí */
+    width: 95%; 
+    padding: 10px;
+    margin-bottom: 20px; 
     background-color: rgba(154, 152, 152, 0.485)
   }
 
   .input {
-    border: 1px solid rgb(170, 159, 159); /* para darles un borde */
+    border: 1px solid rgb(170, 159, 159); 
   }
   
   .back-button {
-    background-color: rgb(141, 143, 144); /* color de fondo del botón */
-    color: rgb(251, 251, 251); /* color del texto */
-    padding: 8px 16px; /* espaciado interior del botón */
-    border-radius: 4px; /* bordes redondos */
-    border: none; /* sin bordes */
-    font-size: 14px; /* tamaño de la fuente */
-    cursor: pointer; /* cursor en forma de mano al pasar el mouse */
-    transition: background-color 0.2s ease; /* transición suave al cambiar el color de fondo */
-    display: flex; /* para alinear el icono y el texto */
-    align-items: center; /* para centrar el icono y el texto */
+    background-color: rgb(141, 143, 144); 
+    color: rgb(251, 251, 251); 
+    padding: 4px 8px; 
+    border-radius: 4px;
+    border: none; 
+    font-size: 14px;
+    cursor: pointer; 
+    transition: background-color 0.2s ease; 
+    display: flex; 
+    align-items: center; 
     text-decoration: none;
   }
   
   .back-button svg {
-    margin-right: 8px; /* espaciado entre el icono y el texto */
-    fill: #fff; /* color del icono */
+    margin-right: 8px; 
+    fill: #fff; 
     text-decoration: none;
     color: white;
   }
   
   .back-button:hover {
-    background-color: #444; /* color de fondo al pasar el mouse */
+    background-color: #444; 
   }
   
   .btnCrear {
-    width: 95%; /* para que ocupen todo el ancho del formulario */
-    padding: 10px; /* para darles un poco de espacio */
-    margin-bottom: 20px; /* para separarlos entre sí */
+    width: 95%; 
+    padding: 10px; 
+    margin-bottom: 20px; 
     background-color: rgba(154, 152, 152, 0.485)
   }

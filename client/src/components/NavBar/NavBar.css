@@ -1,24 +1,24 @@
 
 
   .barraCaja {
-    width: 50%; /* para darle un ancho */
-    margin: 0 auto; /* para centrarlo en la página */
-    position: relative; /* para posicionar el botón de búsqueda */
+    width: 50%; 
+    margin: 0 auto; 
+    position: relative;
   }
   
   .barra {
-    width: 90%; /* para que ocupe la mayor parte del ancho del formulario */
-    padding: 12px 20px; /* para darles un poco de espacio */
-    border: 2px solid #ddd; /* para darles un borde */
-    border-radius: 40px; /* para redondear los bordes */
-    font-size: 16px; /* para cambiar el tamaño de la fuente */
-    transition: width 0.4s ease-in-out; /* para que el ancho cambie suavemente al pasar el mouse */
+    width: 90%; 
+    padding: 12px 20px; 
+    border: 2px solid #ddd; 
+    border-radius: 40px; 
+    font-size: 16px; 
+    transition: width 0.4s ease-in-out; 
   }
   
   .barra:focus {
-    width: 95%; /* para que el input ocupe todo el ancho al hacer focus */
-    border-color: #888; /* para cambiar el color del borde al hacer focus */
-    outline: none; /* para quitar el outline */
+    width: 95%; 
+    border-color: #888; 
+    outline: none; 
   }
   
   .button {
@@ -28,12 +28,12 @@
     right: 0;
     bottom: 0;
     position: absolute;
-    background-color: rgba(219, 210, 210, 0); /* para darle un color de fondo */
-    color: rgb(8, 0, 0); /* para que el texto sea blanco */
-    border: none; /* para quitarle el borde */
-    padding: 10px 15px; /* para darle un poco de espacio */
-    border-radius: 20px; /* para redondear los bordes */
-    cursor: pointer; /* para que el cursor cambie al pasar por encima */
+    background-color: rgba(219, 210, 210, 0); 
+    color: rgb(8, 0, 0); 
+    border: none; 
+    padding: 10px 15px;
+    border-radius: 20px; 
+    cursor: pointer; 
   }
   
   

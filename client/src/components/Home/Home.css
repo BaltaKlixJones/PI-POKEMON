@@ -6,7 +6,7 @@
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  height: 2200px
+  height: 2100px
   ;
 }
 
@@ -103,8 +103,8 @@
   font-family: "Pokemon Font", sans-serif; 
   font-size: 50px; 
   text-align: center; 
-  color: rgb(196, 255, 3); /* Color del texto */
-  text-shadow: 2px 2px #ff0000; /* Sombra del texto */
+  color: rgb(196, 255, 3); 
+  text-shadow: 2px 2px #ff0000; 
   background-image: linear-gradient(
     to right,
     #064167,
