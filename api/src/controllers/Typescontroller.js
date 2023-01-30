@@ -24,7 +24,7 @@ const getTypesAll = async () => {
     typesApi.forEach((t) => {
       Type.findOrCreate({ where: { name: t } });
     });
-    // Retorno todos los generos de mi db
+    // Retorno todos los tipos de mi db
     let typeBDD = await Type.findAll();
    
     return typeBDD;
