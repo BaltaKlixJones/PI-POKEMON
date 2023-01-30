@@ -3,6 +3,8 @@
     flex-wrap: wrap;
     justify-content:space-between;
     text-decoration: none;
+    margin: 20px;
+
 
 }
 
@@ -15,5 +17,6 @@ background-image: url("https://andro4all.com/hero/2019/02/Fondos-de-pantalla-de-
 }
 
 .cardDetail {
+  margin: 20px;
   text-decoration: none;
 }

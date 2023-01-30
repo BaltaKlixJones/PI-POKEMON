@@ -5,7 +5,7 @@ import'./Loading.css'
 export default function Loading () {
     return (
         <div className="loading">
-            <img  src="https://i.pinimg.com/originals/15/3c/fb/153cfb7dcfb406a368a3dc4e35e37efb.gif" alt="" />
+            <img  src="https://media.baamboozle.com/uploads/images/125978/1629738053_29014_gif-url.gif" alt="" />
         </div>
     )
 }

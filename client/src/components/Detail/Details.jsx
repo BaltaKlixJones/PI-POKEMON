@@ -1,19 +1,33 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getDetail } from "../../redux/actions";
+import { getDetail, deletePokemon, getPokemones } from "../../redux/actions";
+import { useHistory } from "react-router-dom";
+
 import "./Details.css"
 
 
 export default function Details(props) {
   const dispatch = useDispatch();
 
+  const {id} = useParams()
+
   useEffect(() => {
     dispatch(getDetail(props.match.params.id));
   }, [dispatch, props.match.params.id]);
 
   const pokemon = useSelector((state) => state.detail);
+
+  const history = useHistory()
+
+
+  const handlerDelete = () => {
+    dispatch(deletePokemon(id));
+    alert("Pokemon eliminado");
+    history.push("/home");
+    dispatch(getPokemones());
+  };
 
   return (
     <div  id={'contenedor'}>
@@ -33,6 +47,16 @@ export default function Details(props) {
       </div>
 
       <div className="container">
+      <Link to="/home">
+          <button className="btnBack">Volver Atras</button>
+        </Link>
+      <button
+              onClick={(e) => handlerDelete(e)}
+          className="btnEliminar"
+         >
+          Eliminar 
+     </button>
+     
         {pokemon.length > 0 ? (
           <div lassName="card">
             <h2>IDº {pokemon[0].id}</h2>
@@ -57,9 +81,11 @@ export default function Details(props) {
             </p>
           </div>
         ):<h4>Espera un segundo... </h4>}
-        <Link to="/home">
-          <button>Volver Atras</button>
-        </Link>
+        
+        
+           
+                    
+
       </div>
     </div>
   );

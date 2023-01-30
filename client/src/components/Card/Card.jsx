@@ -2,10 +2,19 @@
 // Nombre , img y tipo
 
 import React from "react";
+
+
 import "./Card.css"
 
 
 export default function Card({name, img, types}) {
+    // let statePoke = useSelector((state) => state.pokemones);
+
+    // const handleDelete = (e) => {
+    //     const card = [...statePoke]
+    //     card.splice(e.statePoke)
+    //   }
+
     return(
         <div className="cardPoke">
             
@@ -17,10 +26,16 @@ export default function Card({name, img, types}) {
                 <img src = {img} alt= "pokemonImg"/>
                 : <img  src = "https://cdn.dribbble.com/users/1081076/screenshots/2832850/pokemongo.gif" alt= "No se pudo cargar la imagen"/> } 
         </div>
+       
             <div className="cardPoke-description">
                 <h4>Tipo:</h4>
                 <h4>{types?.map(e=> <span>{e + " "}</span> )}</h4>
             </div>
+           
+            
+                
+
+           
             
         </div>
     )

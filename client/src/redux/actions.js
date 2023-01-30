@@ -9,7 +9,7 @@ export const FILTER_TYPE = 'FILTER_TYPE'
 export const ORDER_A_Z = 'ORDER_A_Z'
 export const FILTER_API_DB = "FILTER_API_DB"
 export const CURRENT_PAGE = "CURRENT_PAGE"
-// export const DELETE = "DELETE"
+export const DELETE = "DELETE"
 export const FILTER_VIDA = "FILTER_VIDA";
 export const FILTER_ATTACK = "FILTER_ATTACK";
 
@@ -26,12 +26,7 @@ export const getPokemones = () => {
   };
 };
 
-// export const cleanPokemons = (dispatch) => {
-//   return dispatch({
-//     type: CLEAN_POKEMONS,
-//     payload: [],
-//   });
-// };
+
 
 export function getDetail(id) {
     return async function (dispatch) {
@@ -113,18 +108,20 @@ export function filterAttack(payload) {
 
 
 
-// export const deletePokemon = (pokemonId)=> {
-//   return async function (dispatch) {
-//     try {
-//       await axios.delete(`/delete/${pokemonId}`);
-//       return dispatch({
-//         type: DELETE,
-//       });
-//     } catch (error) {
-//       console.log("No puedo eliminar el pokemon", error);
-//     }
-//   };
-// }
+export function deletePokemon(id) {
+  return async function (dispatch) {
+    try {
+      const url =await axios.delete(`http://localhost:3001/pokemons/delete/${id}`);
+      return dispatch({
+        type: "DELETE",
+        url
+      });
+    } catch (error) {
+      console.log("No puedo eliminar el pokemon", error);
+    }
+  };
+}
+
 
 
 

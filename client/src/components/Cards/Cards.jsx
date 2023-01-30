@@ -22,10 +22,7 @@ export default function Cards() {
     dispatch(getPokemones());
   }, [dispatch]);
 
-  // const handleDelete = (e) => {
-  //   const card = [...statePoke]
-  //   card.splice(e.statePoke)
-  // }
+
  
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -61,16 +58,18 @@ export default function Cards() {
               </div>
           ) : ( 
             currentPokes.map((p) => (
-             
+              
                  <Link className="cardDetail" key={p.id} to={`/details/${p.id}`}>
-                   {<Card/> ? <Card  name={p.name} img={p.img} types={p.types} /> : <Loading/>}
+                  <Card  name={p.name} img={p.img} types={p.types} />  
                    <br />
+                  
                  </Link>
+                 
+                 ))
+                 )
+                }
+                 
                 
-                  ))
-               )
-               
-               }
       </div>
     </>
   );

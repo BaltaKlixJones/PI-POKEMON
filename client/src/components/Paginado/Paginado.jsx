@@ -18,12 +18,14 @@ const Paginado = ({ pokesPerPage, allPokemones, paginado, currentPage }) => {
   }
 
   pageNumber.pop();
+
+  
  
   return (
     <div className="pag_div_externo">
         <div className="paginado">
     {currentPage !== 1 ?
-      <button className="prevBtn" key="prev" onClick={() => handlePrev(currentPage)}> Anterior </button>
+      <button className="prevBtn" key="prev" onClick={() => handlePrev(currentPage)}>Prev </button>
       : ""
     }
 
@@ -40,7 +42,7 @@ const Paginado = ({ pokesPerPage, allPokemones, paginado, currentPage }) => {
           );
         })}
         {currentPage !== Math.ceil(allPokemones / pokesPerPage)? 
-      <button className="nextBtn" key="next" onClick={() => handleNext(currentPage)}>Siguiente</button> :
+      <button className="nextBtn" key="next" onClick={() => handleNext(currentPage)}>Next </button> :
       ""
     }
     

@@ -6,7 +6,37 @@
     background-repeat: no-repeat;
     height: 1200px;
 }
+.btnEliminar{
+ 
+    background-color: rgba(255, 0, 0, 0.785);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    float: right;
+  }
 
+  .btnEliminar:hover {
+
+    background-color: rgba(48, 30, 9, 0.897);
+    color: rgb(255, 255, 255);
+  }
+
+  .btnBack{
+    background-color: rgba(246, 229, 229, 0.492);
+    color: rgb(4, 0, 0);
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    float: left;
+  }
+
+  .btnBack:hover{
+    background-color: rgba(48, 30, 9, 0.897);
+    color: rgb(255, 255, 255);
+  }
 .img {
     width: 250px;
     -webkit-filter: drop-shadow(5px 5px 5px #222);

@@ -43,8 +43,8 @@ export default function Home(){
     function hanldeAttack(e) {
         dispatch(filterAttack(e.target.value))
 
-
     }
+
 
     return (
 

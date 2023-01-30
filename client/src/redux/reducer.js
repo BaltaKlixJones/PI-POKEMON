@@ -10,7 +10,8 @@ import {
   FILTER_API_DB,
   ORDER_A_Z,
   FILTER_VIDA,
-  FILTER_ATTACK
+  FILTER_ATTACK,
+  DELETE
 } from "./actions";
 
 let initialState = {
@@ -134,11 +135,11 @@ export default function rootReducer(state = initialState, action) {
             ? aux.filter((c) => isNaN(c.id))
             : aux.filter((c) => !isNaN(c.id)),
       };
-      // case DELETE:
-      //   return {
-      //     ...state,
-      //     detail: action.payload,
-      //   };
+      case DELETE:
+        return {
+          ...state,
+          
+        };
     default:
       return state;
   }

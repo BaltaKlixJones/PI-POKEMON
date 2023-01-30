@@ -7,7 +7,7 @@ const Landing = () => {
         <div className="home-page">
             <h1>Bienvenido al mundo Pokemon !</h1>
             <Link to="/home">
-                <button className="home-button">Home</button>
+                <button className="home-button">Empezar Ahora</button>
             </Link>
         </div>
     );
