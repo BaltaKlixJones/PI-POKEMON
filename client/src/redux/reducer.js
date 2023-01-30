@@ -63,7 +63,9 @@ export default function rootReducer(state = initialState, action) {
       };
       case FILTER_ATTACK :
         let orderAttack = [...state.allPokemons]
-        let pokeAttack = action.payload === 'ascA' ? orderAttack.sort((a,b)=> {
+        let pokeAttack = 
+        action.payload === "All" ? orderAttack :
+        action.payload === 'ascA' ? orderAttack.sort((a,b)=> {
           if (a.attack > b.attack) {
             return 1
           } else if (a.attack < b.attack) {return -1}
@@ -100,7 +102,8 @@ export default function rootReducer(state = initialState, action) {
     case ORDER_A_Z:
       let ordName = [...state.allPokemons];
       let pokeByName =
-        action.payload === "asc"
+      action.payload === "All" ? ordName :
+       action.payload === "asc"
           ? ordName.sort((a, b) => {
               if (a.name.toLowerCase() > b.name.toLowerCase()) {
                 return 1;

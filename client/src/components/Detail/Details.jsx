@@ -50,12 +50,7 @@ export default function Details(props) {
       <Link to="/home">
           <button className="btnBack">Volver Atras</button>
         </Link>
-      <button
-              onClick={(e) => handlerDelete(e)}
-          className="btnEliminar"
-         >
-          Eliminar 
-     </button>
+      <button onClick={(e) => handlerDelete(e)}className="btnEliminar">Eliminar </button>
      
         {pokemon.length > 0 ? (
           <div lassName="card">
