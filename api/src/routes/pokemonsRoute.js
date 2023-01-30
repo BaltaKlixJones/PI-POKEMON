@@ -51,7 +51,7 @@ router.get("/:id", async (req, res) => {
         : res.status(404).send("No se pudo encontrar el pokemon");
     }
   } catch (e) {
-    console.log("Error en Id" + e);
+    res.status(400).send({error: e.message})
   }
 });
 
@@ -89,7 +89,7 @@ const tipos = await Type.findAll({
 nvoPokemon.addType(tipos);
 
 
-  console.log(img)
+  // console.log(img)
   
   nvoPokemon
   ? res.status(200).send("Pokemon creado con exito")
@@ -100,19 +100,19 @@ nvoPokemon.addType(tipos);
   }
 });
 
-// router.delete("/delete/:id", async (req,res)=>{
-//   const { id } = req.params;
-//   try {
-//     const pokemonDelete = await Pokemon.findByPk(id);
-//     if (!pokemonDelete) {
-//       res.status(400).send("No existe el pokemon que deseas eliminar");
-//     } else {
-//       pokemonDelete.destroy();
-//       return res.status(200).send("Pokemon eliminado");
-//     }
-//   } catch (error) {
-//     res.status(400).json({ error: error.message }, "error de delete");
-//   }
-// })
+router.delete("/delete/:id", async (req,res)=>{
+  const { id } = req.params;
+  try {
+    const pokemonDelete = await Pokemon.findByPk(id);
+    if (!pokemonDelete) {
+      res.status(400).send("No existe el pokemon que deseas eliminar");
+    } else {
+      pokemonDelete.destroy();
+      return res.status(200).send("Pokemon eliminado");
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message }, "error de delete");
+  }
+})
 
 module.exports = router;

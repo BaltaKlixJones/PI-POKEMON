@@ -43,18 +43,18 @@ let getPokemonBd = async () => {
     }]
 })
 
-let pokeTMap = pokeDb.map(curr => {
+let pokeTMap = pokeDb.map(p => {
     return{
-        id: curr.id,
-        name: curr.name,
-        height: curr.height,
-        weight: curr.weight,
-        hp: curr.hp,
-        attack: curr.attack,
-        defense: curr.defense,
-        speed: curr.speed,
-        img: curr.img,
-        types: curr.types.map(curr => curr.name)
+        id: p.id,
+        name: p.name,
+        height: p.height,
+        weight: p.weight,
+        hp: p.hp,
+        attack: p.attack,
+        defense: p.defense,
+        speed: p.speed,
+        img: p.img,
+        types: p.types.map(curr => curr.name)
     }
 })
  
