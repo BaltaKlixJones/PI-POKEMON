@@ -67,8 +67,7 @@ export default function Home() {
       <h3 className="textFilter">Filtrar por:</h3>
       <div className="filtrar">
         <select className="btnOrdenar" onChange={(e) => handleOrderAZ(e)}>
-            
-          <option value={"All"}>ALFABETICO  </option>
+          <option value={"All"}>ALFABETICO </option>
           <option value={"asc"}>A-Z</option>
           <option value={"desc"}>Z-A</option>
         </select>
@@ -88,7 +87,7 @@ export default function Home() {
         </select>
 
         <select className="btnTipos" onChange={(e) => hanldeAttack(e)}>
-        <option value="All">Ataque</option>
+          <option value="All">Ataque</option>
           <option value="descA">Ataque mayor a menor</option>
           <option value="ascA">Ataque menor a mayor</option>
         </select>

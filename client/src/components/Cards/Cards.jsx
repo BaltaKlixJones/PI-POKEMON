@@ -7,13 +7,8 @@ import "./Cards.css";
 import Loading from "../Loading/Loading";
 import Paginado from "../Paginado/Paginado";
 
-
-
 export default function Cards() {
- 
   let statePoke = useSelector((state) => state.pokemones);
-
-  
 
   console.log(statePoke);
   const dispatch = useDispatch();
@@ -22,62 +17,44 @@ export default function Cards() {
     dispatch(getPokemones());
   }, [dispatch]);
 
-
- 
-
   const [currentPage, setCurrentPage] = useState(1);
   const [pokesPerPage, setPokesPerPage] = useState(15);
 
   const indexOfLastPokes = currentPage * pokesPerPage; //15
   const indexOfFirstPoke = indexOfLastPokes - pokesPerPage; //0
   const currentPokes = statePoke.slice(indexOfFirstPoke, indexOfLastPokes);
-  
+
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-
   return (
     <>
-      
       <Paginado
-      currentPage={currentPage}
+        currentPage={currentPage}
         pokesPerPage={pokesPerPage}
         allPokemones={statePoke.length}
         paginado={paginado}
       />
-       <br />
+      <br />
 
       <div className="cards">
-        {
-        !currentPokes.length  ? (
-              <div >
-              <div >
-              <Loading/>
-              </div>
-              </div>
-          ) : ( 
-            currentPokes.map((p) => (
-              
-                 <Link className="cardDetail" key={p.id} to={`/details/${p.id}`}>
-                  <Card  name={p.name} img={p.img} types={p.types} />  
-                   
-                  
-                 </Link>
-                 
-                 ))
-                 )
-                }
-                 
-                
+        {!currentPokes.length ? (
+          <div>
+            <div>
+              <Loading />
+            </div>
+          </div>
+        ) : (
+          currentPokes.map((p) => (
+            <Link className="cardDetail" key={p.id} to={`/details/${p.id}`}>
+              <Card name={p.name} img={p.img} types={p.types} />
+            </Link>
+          ))
+        )}
       </div>
     </>
   );
 }
 
-// const handleDelete = () => {
-//   dispatch(deletePokemon(id));
-//   alert("Pokemon eliminado");
-//   history.push("/home");
-//   dispatch(getPokemones());
-// };
+
