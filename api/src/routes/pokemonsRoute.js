@@ -75,17 +75,13 @@ router.post("/create", async (req, res) => {
     };
     const nvoPokemon = await Pokemon.create(obj);
 
+    
+    const tipos = await Type.findAll({
+      where: {
+        name: types,
+      },
+    });
     // console.log(nvoPokemon.__proto__);
-// const tipos  =await Type.findAll({
-//   where : {
-//     name: types
-//   }
-//   })
-const tipos = await Type.findAll({
-  where: {
-    name: types,
-  },
-});
 nvoPokemon.addType(tipos);
 
 
@@ -111,7 +107,7 @@ router.delete("/delete/:id", async (req,res)=>{
       return res.status(200).send("Pokemon eliminado");
     }
   } catch (error) {
-    res.status(400).json({ error: error.message }, "error de delete");
+    res.status(400).json({ error: error.message });
   }
 })
 
