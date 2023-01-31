@@ -4,6 +4,7 @@ import Form from "./components/Formulario/Form";
 import Details from "./components/Detail/Details";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Landing from "./components/Landing/Landing";
+import Error from "./components/Error/Error"
 
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
         <Route exact path="/" component={Landing} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/create" component={Form} />
-        {/* <Route path="*" component={Error404} /> */}
         <Route exact path="/details/:id" component={Details} />
+        <Route path="/*" component={Error} />
       </Switch>
     </div>
     </BrowserRouter>
