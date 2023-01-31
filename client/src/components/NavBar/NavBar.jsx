@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getNamePoke } from "../../redux/actions";
+import { getNamePoke, getPokemones } from "../../redux/actions";
 import "./NavBar.css";
 
 export default function NavBar() {
@@ -15,6 +15,7 @@ export default function NavBar() {
   function handleSubmit(event) {
     event.preventDefault();
     dispatch(getNamePoke(name));
+    
   }
   return (
     <div className="barraCaja">

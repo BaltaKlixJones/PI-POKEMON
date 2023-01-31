@@ -42,7 +42,7 @@ export default function Cards() {
         {!currentPokes.length ? (
           <div>
             <div>
-              <Loading />
+             <Loading/>
             </div>
           </div>
         ) : (
