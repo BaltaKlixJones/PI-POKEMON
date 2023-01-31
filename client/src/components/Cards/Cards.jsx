@@ -6,12 +6,21 @@ import { getPokemones } from "../../redux/actions";
 import "./Cards.css";
 import Loading from "../Loading/Loading";
 import Paginado from "../Paginado/Paginado";
+import Error from "../Error/Error"
 
 export default function Cards() {
   let statePoke = useSelector((state) => state.pokemones);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   console.log(statePoke);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
 
   useEffect(() => {
     dispatch(getPokemones());
@@ -39,13 +48,14 @@ export default function Cards() {
       <br />
 
       <div className="cards">
-        {!currentPokes.length ? (
+        {loading ? (
           <div>
             <div>
-             <Loading/>
+              <Loading />
+             
             </div>
           </div>
-        ) : (
+        ) : !currentPokes.length ? <Error/> :(
           currentPokes.map((p) => (
             <Link className="cardDetail" key={p.id} to={`/details/${p.id}`}>
               <Card name={p.name} img={p.img} types={p.types} />
