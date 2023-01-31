@@ -1,13 +1,10 @@
 #home {
   background-image: url("https://assets.pokemon.com/assets//cms-es-es/img/funzone/downloads/xy/Yveltal-Pokemon-X-and-Y_1920x1200.jpg");
-  /* background-position: center;
-    height: 99.9vh; */
   background-position: center;
   background-size: cover;
-  background-attachment: fixed;
   background-repeat: no-repeat;
-  height: 2100px
-  ;
+  background-attachment: fixed ;
+  height: max-content;;
 }
 
 .textFilter{

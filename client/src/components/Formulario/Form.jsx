@@ -173,8 +173,8 @@ export default function CreatePokemon() {
       error?.hp === undefined &&
       error?.height === undefined &&
       error?.weight === undefined &&
-      error?.img === undefined &&
-      error?.types === undefined
+      error?.types === undefined &&
+      error?.img === undefined
     ) {
       setDisEna(true);
     } else {
@@ -339,7 +339,9 @@ export default function CreatePokemon() {
             <label>Tipos: </label>
 
             <select onChange={(e) => handleTypes(e)}>
-              {tipos?.map((ty) => {
+              
+              {input.types.length == 2? "" :
+              tipos?.map((ty) => {
                 return (
                   <option name={ty.name} value={ty.name}>
                     {ty.type}
@@ -352,20 +354,24 @@ export default function CreatePokemon() {
             {input.types?.map((e) => {
               return (
                 <div className="typesSelect" key={e}>
-                  <p className="pTypes">{e}</p>
+                  <p className="pTypes">{e} ✅</p>
+                  {input.types.length > 2 ? 
                   <button
-                    className="btnDelete"
-                    onClick={() => {
-                      handleDelete(e);
-                    }}
-                  >
-                    x
-                  </button>
+                  className="btnDelete"
+                  onClick={() => {
+                    handleDelete(e);
+                  }}
+                >
+                  x
+                </button> :
+                ""}
+                  
                 </div>
               );
             })}
 
-            <p>{error.types}</p>
+            <p>{input.types.length == 0 ?"" : error.types}</p>
+            <p>{input.types.length == 1 ?"Puedes agregar 1 mas si quieres!" : error.types}</p>
 
             <br />
           </div>
