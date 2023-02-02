@@ -18,20 +18,21 @@
   cursor: pointer;
 }
 .prevBtn:hover{
-  background-color: #060000;
+  color:black;
 }
 
 
 
 .nextBtn:hover {
-  background-color: #060000;
+  color:black;
 }
+
 i {
   margin-left: 10px;
 }
 
 .prevBtn {
-  margin-right: 20px;
+  margin-right: 5px;
 }
 
 .numbered-buttons {

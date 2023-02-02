@@ -22,6 +22,7 @@
   }
 
   .barra {
+    margin: 10px;
     width: 90%; 
     padding: 12px 20px; 
     border: 2px solid rgba(91, 83, 83, 0.611); 
@@ -31,6 +32,7 @@
     animation: fadeIn 1s ease-out;
     background-color: rgba(247, 243, 243, 0.326);
     color: rgb(8, 0, 0);
+    overflow: hidden;
   }
 
   
@@ -51,32 +53,39 @@
   } */
   
   .button {
-   
+   /* display: flex; */
+    /* position: relative; */
    letter-spacing: 1px;
-    width: 155px;
+    width: 50px;
     top: -250px;
-    left: -345px;
+    left: -625px;
     bottom: 0;
     height: 35px;
-    color: white;
-    font-size: 12px;
+    color: #f39107;
+    background-color: rgb(234, 128, 67);
+    font-size: 18px;
     text-transform: uppercase;
     font-weight: 600;
-    background-image: linear-gradient(
+    /* background-image: linear-gradient(
     to right,
-    #f39107,
+    ,
     #db2d06
-  ); 
-    position: absolute;
+  );  */
     /* background-color: rgba(219, 210, 210, 0.866);  */
     border: none; 
     padding: 5px 15px;
     border-radius: 50px; 
     cursor: pointer; 
+    overflow: hidden;
   }
+
+  .button:hover {
+    background-color: #e4dcd0;
+  }
+
   .lupa {
     width: 10%;
-    top: 0;
+    top: 35px;
     right: 0;
     bottom: 0;
     font-size: 20px;

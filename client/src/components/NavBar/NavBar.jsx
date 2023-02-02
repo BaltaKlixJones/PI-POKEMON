@@ -20,14 +20,11 @@ export default function NavBar() {
   }
   return (
     <div className="barraCaja">
-      {/* <input
-        className="barra"
-        type="text"
-        placeholder="Search Pokemon..."
-        onChange={(e) => handleInputChange(e)}
-      /> */}
+      
+      
       <div>
-      <button className="button" onClick={() => setIsOpen(!isOpen)}>{!isOpen ? "🔎 Search" : " ❌ Close"}</button>
+      <button className="button" onClick={() => setIsOpen(!isOpen)}>{!isOpen ? "🔎  " : " ❌ "}</button>
+      <br />
       {isOpen && <input
         className="barra"
         type="text"

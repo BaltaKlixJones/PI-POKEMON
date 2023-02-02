@@ -17,6 +17,7 @@ import "./Home.css";
 import Error from "../Error/Error"
 import AboutMe from "../About/About";
 
+
 export default function Home() {
   const dispatch = useDispatch();
 
@@ -58,7 +59,11 @@ export default function Home() {
         <div className="btnCrearhome">
           <h5>Create Pokemon</h5>
         </div>
+
       </Link>
+        
+        
+        
       <Link to="/home">
         <div className="containerRecarga">
           <button className="reload-button" onClick={"location.reload()"}>
@@ -97,16 +102,9 @@ export default function Home() {
           <option value="descA">ATTACK + TO -</option>
           <option value="ascA">ATTACK - TO +</option>
         </select>
-
-        
-      </div>
-      
-      <div id={"home"}>
-      <AboutMe/>
         <h1 className="pokemon-title">🔥 Pokemons 🔥</h1>
         <NavBar />
-        
-
+        <AboutMe/>
         {<Cards /> ? <Cards /> : <Error/>}
       </div>
     </div>
