@@ -13,7 +13,7 @@ const Paginado = ({ pokesPerPage, allPokemones, paginado, currentPage }) => {
   };
 
   const handleNext = (currentPage) => {
-    if (currentPage !== 7) paginado(currentPage + 1);
+    if (currentPage !== 1000) paginado(currentPage + 1);
   };
 
   pageNumber.pop();
@@ -27,7 +27,7 @@ const Paginado = ({ pokesPerPage, allPokemones, paginado, currentPage }) => {
             key="prev"
             onClick={() => handlePrev(currentPage)}
           >
-            Prev{" "}
+            Prev
           </button>
         ) : (
           ""
@@ -54,7 +54,7 @@ const Paginado = ({ pokesPerPage, allPokemones, paginado, currentPage }) => {
             key="next"
             onClick={() => handleNext(currentPage)}
           >
-            Next{" "}
+            Next
           </button>
         ) : (
           ""

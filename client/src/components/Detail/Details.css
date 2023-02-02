@@ -11,7 +11,7 @@
     background-color: rgba(255, 0, 0, 0.785);
     color: white;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 50px;
     border: none;
     cursor: pointer;
     float: right;
@@ -27,7 +27,7 @@
     background-color: rgba(246, 229, 229, 0.492);
     color: rgb(4, 0, 0);
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 50px;
     border: none;
     cursor: pointer;
     float: left;

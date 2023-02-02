@@ -7,7 +7,9 @@
   height: max-content;
   color: rgb(241, 241, 246)
 }
+
 .conteiner {
+  flex-wrap: wrap;
     width: 500px; /* para darle un ancho al formulario */
     margin: 0 auto; /* para centrarlo en la página */
     padding: 20px; /* para darle un poco de espacio alrededor */

@@ -8,7 +8,7 @@ export default function Loading () {
         <div id={"home"}>
         <div className="loading">
             <img  src="https://media.baamboozle.com/uploads/images/125978/1629738053_29014_gif-url.gif" alt="" />
-            <p style={{color:"white"}}>Espera un segundo ...</p>
+            <p style={{color:"white"}}>Wait a second ...</p>
             
         </div>
         </div>

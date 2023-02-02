@@ -1,16 +1,17 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams,useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getDetail, deletePokemon, getPokemones } from "../../redux/actions";
-import { useHistory } from "react-router-dom";
+import { getDetail, getPokemones, deletePoke } from "../../redux/actions";
+
+
 
 import "./Details.css";
 
 export default function Details(props) {
   const dispatch = useDispatch();
 
-  const { id } = useParams();
+
 
   useEffect(() => {
     dispatch(getDetail(props.match.params.id));
@@ -18,14 +19,20 @@ export default function Details(props) {
 
   const pokemon = useSelector((state) => state.detail);
 
-  const history = useHistory();
+  const {id} = useParams()
+  const history = useHistory()
 
   const handlerDelete = () => {
-    dispatch(deletePokemon(id));
-    alert("Pokemon eliminado con Éxito!");
-    history.push("/home");
-    dispatch(getPokemones());
-  };
+    dispatch(deletePoke(id))
+    alert("Pokemon Delete!")
+    history.push("/home")
+    dispatch(getPokemones)
+  }
+
+
+  
+
+ 
 
   return (
     <div id={"contenedor"}>
@@ -47,11 +54,11 @@ export default function Details(props) {
 
       <div className="container">
         <Link to="/home">
-          <button className="btnBack">Volver Atras</button>
+          <button className="btnBack">🔙</button>
         </Link>
-        <button onClick={(e) => handlerDelete(e)} className="btnEliminar">
-          Eliminar{" "}
-        </button>
+
+        <button onClick={(e) => handlerDelete(e)} className="btnEliminar"> 🗑️</button>
+        
 
         {pokemon.length > 0 ? (
           <div lassName="card">
@@ -85,7 +92,7 @@ export default function Details(props) {
             </p>
           </div>
         ) : (
-          <h4>Espera un segundo... </h4>
+          <h4>Wait a second... </h4>
         )}
       </div>
     </div>

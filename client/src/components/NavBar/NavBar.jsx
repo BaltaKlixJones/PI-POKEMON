@@ -7,6 +7,7 @@ import "./NavBar.css";
 export default function NavBar() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
+  const [isOpen , setIsOpen] = useState(false)
 
   function handleInputChange(e) {
     setName(e.target.value);
@@ -19,16 +20,29 @@ export default function NavBar() {
   }
   return (
     <div className="barraCaja">
-      <input
+      {/* <input
         className="barra"
         type="text"
-        placeholder="Buscar Pokemon..."
+        placeholder="Search Pokemon..."
+        onChange={(e) => handleInputChange(e)}
+      /> */}
+      <div>
+      <button className="button" onClick={() => setIsOpen(!isOpen)}>{!isOpen ? "🔎 Search" : " ❌ Close"}</button>
+      {isOpen && <input
+        className="barra"
+        type="text"
+        
+        placeholder  = "Search Pokemon..."
         onChange={(e) => handleInputChange(e)}
       />
-
-      <button className="button" type="submit" onClick={(e) => handleSubmit(e)}>
+      
+      }
+    </div>
+    {/* <button className="button" onClick={() => setIsOpen(!isOpen)}>🔎 Search Pokemon</button> */}
+      {isOpen && <button className="lupa" type="submit" onClick={(e) => handleSubmit(e)}>
         🔎
-      </button>
+      </button>}
+
     </div>
   );
 }

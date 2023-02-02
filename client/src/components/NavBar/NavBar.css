@@ -4,29 +4,82 @@
     width: 50%; 
     margin: 0 auto; 
     position: relative;
+    
   }
-  
+ 
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .barra::placeholder {
+    color: white;
+  }
+
   .barra {
     width: 90%; 
     padding: 12px 20px; 
-    border: 2px solid #ddd; 
+    border: 2px solid rgba(91, 83, 83, 0.611); 
     border-radius: 40px; 
     font-size: 16px; 
     transition: width 0.4s ease-in-out; 
+    animation: fadeIn 1s ease-out;
+    background-color: rgba(247, 243, 243, 0.326);
+    color: rgb(8, 0, 0);
   }
+
+  
+  
+  
   
   .barra:focus {
     width: 95%; 
-    border-color: #888; 
-    outline: none; 
+    border-color: #888;
+    outline: none;
+    color: white;
+    
   }
+
+  /* .barra.open {
+    
+   transition: opacity 0.2s ease-out;
+  } */
   
   .button {
    
+   letter-spacing: 1px;
+    width: 155px;
+    top: -250px;
+    left: -345px;
+    bottom: 0;
+    height: 35px;
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background-image: linear-gradient(
+    to right,
+    #f39107,
+    #db2d06
+  ); 
+    position: absolute;
+    /* background-color: rgba(219, 210, 210, 0.866);  */
+    border: none; 
+    padding: 5px 15px;
+    border-radius: 50px; 
+    cursor: pointer; 
+  }
+  .lupa {
     width: 10%;
     top: 0;
     right: 0;
     bottom: 0;
+    font-size: 20px;
     position: absolute;
     background-color: rgba(219, 210, 210, 0); 
     color: rgb(8, 0, 0); 
@@ -34,6 +87,7 @@
     padding: 10px 15px;
     border-radius: 20px; 
     cursor: pointer; 
+   
   }
   
   

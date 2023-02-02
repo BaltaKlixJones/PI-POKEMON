@@ -8,15 +8,13 @@ export const GET_DETAILS = 'GET_DETAILS'
 export const FILTER_TYPE = 'FILTER_TYPE'
 export const ORDER_A_Z = 'ORDER_A_Z'
 export const FILTER_API_DB = "FILTER_API_DB"
-export const CURRENT_PAGE = "CURRENT_PAGE"
-export const DELETE = "DELETE"
-export const FILTER_VIDA = "FILTER_VIDA";
 export const FILTER_ATTACK = "FILTER_ATTACK";
+export const DELETE = "DELETE"
 
 
 
 
-// ruta para traer los pokemones haciendo el pedido a la api
+
 export const getPokemones = () => {
   return async (dispatch) => {
     let pedidoApi = await axios.get("http://localhost:3001/pokemons/");
@@ -92,12 +90,7 @@ export function creApiFilt(payload){
   }
 }
 
-export function filterVida(payload){
-  return{
-      type: "FILTER_VIDA",
-      payload
-  }
-}
+
 
 export function filterAttack(payload) {
   return{
@@ -107,20 +100,17 @@ export function filterAttack(payload) {
 }
 
 
-
-export function deletePokemon(id) {
+export function deletePoke(id) {
   return async function (dispatch) {
-    try {
-      const url =await axios.delete(`http://localhost:3001/pokemons/delete/${id}`);
-      return dispatch({
-        type: "DELETE",
-        url
-      });
-    } catch (error) {
-      console.log("No puedo eliminar el pokemon", error);
+    let url = await axios.delete("http://localhost:3001/pokemons/delete/" + id)
+    return {
+      type: "DELETE",
+      url
     }
-  };
+  }
 }
+
+
 
 
 

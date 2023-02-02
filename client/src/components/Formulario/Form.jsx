@@ -59,7 +59,7 @@ export default function CreatePokemon() {
       types: [],
     });
 
-    alert("¡Pokemon creado con Éxito!");
+    alert("¡Pokemon created!");
     history.push("/home");
   };
 
@@ -156,7 +156,7 @@ export default function CreatePokemon() {
       validError.img = "El link de la imagen debe ser una URL";
     }
 
-    if (pokeValidar.types.length === 0 || pokeValidar.types.length > 2) {
+    if ( pokeValidar.types.length === 0 || pokeValidar.types.length >= 3) {
       validError.types = "Debe tener un maximo de 2 tipos!";
     }
 
@@ -183,32 +183,42 @@ export default function CreatePokemon() {
   };
 
   const handleDelete = (e) => {
-    setInput({
-      ...input,
-      types: input.types.filter((type) => type !== e),
-    });
+    const tipoID = input.types.filter(((type) => type !== e))
+    setInput({...input, types: tipoID });
+    setDisEna(tipoID.length !== 0 )
+    
+   
   };
+
+  // const handleDelete = (i) => {
+  //   const updatedCountryId = form.countryId.filter((element => element !== i));
+  //   setForm({
+  //     ...form,
+  //     countryId: updatedCountryId
+  //   });
+  //   setDisEna(updatedCountryId.length !== 0);
+
 
   return (
     <div className="form">
       <div className="container">
         <button class="back-button">
           <Link className="back-button" to="/home">
-            <svg width="24" height="24" viewBox="0 0 24 24">
+            {/* <svg width="24" height="24" viewBox="0 0 24 24">
               <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
-            </svg>
-            Volver atrás
+            </svg> */}
+            🔙
           </Link>
         </button>
-        <h2>¡Crea tu Pokemon!</h2>
+        <h2>¡Create your Pokemon!</h2>
 
         <br />
         <form onSubmit={(e) => handleSubmit(e)} className="form">
           <div className="input">
-            <label>Nombre: </label>
+            <label>Name: </label>
             <input
               type={"text"}
-              placeholder={"Ponle un nombre!"}
+              placeholder={"Give it a name!"}
               name={"name"}
               value={input.name}
               onChange={(e) => handleOnChange(e)}
@@ -222,7 +232,7 @@ export default function CreatePokemon() {
             <label>
               <input
                 type={"text"}
-                placeholder={"Pon una url!"}
+                placeholder={"Put a url!"}
                 name={"img"}
                 value={input.img}
                 onChange={(e) => handleOnChange(e)}
@@ -242,10 +252,10 @@ export default function CreatePokemon() {
             ></img>
             <p>{error.img}</p>
           </div>
-          <h3>Ponle sus atributos!</h3>
+          <h3>Attributes !</h3>
 
           <div className="atributos">
-            <label>Ataque: </label>
+            <label>Attack: </label>
             {/* <input type={'number'} placeholder={'Ej: 40'} name={'attack'} value={input.attack} onChange={ (e) => handleOnChange(e)}/> */}
             <input
               type={"range"}
@@ -259,7 +269,7 @@ export default function CreatePokemon() {
             <p>{error.attack}</p>
             <br />
 
-            <label>Defensa: </label>
+            <label>Defense: </label>
             {/* <input type={'number'} placeholder={'Ej: 65'} name={'defense'} value={input.defense} onChange={ (e) => handleOnChange(e)}/> */}
             <input
               type={"range"}
@@ -274,7 +284,7 @@ export default function CreatePokemon() {
 
             <br />
 
-            <label>Velocidad: </label>
+            <label>Speed: </label>
             {/* <input type={'number'} placeholder={'Ej: 55'} name={'speed'} value={input.speed} onChange={ (e) => handleOnChange(e)}/> */}
             <input
               type={"range"}
@@ -290,7 +300,7 @@ export default function CreatePokemon() {
             <br />
           </div>
           <div className="atributos2">
-            <label>Vida: </label>
+            <label>Hp: </label>
             {/* <input type={'number'} placeholder={'Ej: 70'} name={'hp'} value={input.hp} onChange={ (e) => handleOnChange(e)}/> */}
             <input
               type={"range"}
@@ -305,11 +315,11 @@ export default function CreatePokemon() {
 
             <br />
 
-            <label>Peso: </label>
+            <label>Weight: </label>
             <label>
               <input
                 type={"number"}
-                placeholder={"Entre 1 y 1000"}
+                placeholder={" 1 - 1000"}
                 name={"weight"}
                 value={input.weight}
                 onChange={(e) => handleOnChange(e)}
@@ -320,11 +330,11 @@ export default function CreatePokemon() {
 
             <br />
 
-            <label>Altura: </label>
+            <label>Height: </label>
             <label>
               <input
                 type={"number"}
-                placeholder={"Entre 1 y 40"}
+                placeholder={"1 - 40"}
                 name={"height"}
                 value={input.height}
                 onChange={(e) => handleOnChange(e)}
@@ -336,11 +346,11 @@ export default function CreatePokemon() {
             <br />
           </div>
           <div className="tipos">
-            <label>Tipos: </label>
+            <label>Type: </label>
 
             <select onChange={(e) => handleTypes(e)}>
               
-              {input.types.length == 2? "" :
+              {
               tipos?.map((ty) => {
                 return (
                   <option name={ty.name} value={ty.name}>
@@ -355,7 +365,7 @@ export default function CreatePokemon() {
               return (
                 <div className="typesSelect" key={e}>
                   <p className="pTypes">{e} ✅</p>
-                  {input.types.length > 2 ? 
+                  { 
                   <button
                   className="btnDelete"
                   onClick={() => {
@@ -363,15 +373,15 @@ export default function CreatePokemon() {
                   }}
                 >
                   x
-                </button> :
-                ""}
+                </button> 
+                }
                   
                 </div>
               );
             })}
 
-            <p>{input.types.length == 0 ?"" : error.types}</p>
-            <p>{input.types.length == 1 ?"Puedes agregar 1 mas si quieres!" : error.types}</p>
+            <p>{input.types.length >= 3 ? error.types : ""}</p>
+            <p>{input.types.length === 1 ?"Puedes agregar 1 mas si quieres!" : ""}</p>
 
             <br />
           </div>
@@ -379,9 +389,9 @@ export default function CreatePokemon() {
           <br />
           <div className="btnCrear">
             <button disabled={!disEna && "disabled"} type={"submit"}>
-              Crear Pokemon
+              Create now!
             </button>
-            {!disEna ? <p>Revise todos los campos</p> : <p></p>}
+            {!disEna ? <p>Check all fields</p> : <p></p>}
           </div>
         </form>
         <br />

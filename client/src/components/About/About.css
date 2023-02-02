@@ -1,0 +1,62 @@
+.btnAbout {
+   
+    letter-spacing: 1px;
+     width: 155px;
+     top: 135px;
+     right: 20px;
+     bottom: 0;
+     height: 35px;
+     color: white;
+     font-size: 12px;
+     text-transform: uppercase;
+     font-weight: 600;
+     background-image: linear-gradient(
+     to right,
+     #f39107,
+     #db2d06
+   ); 
+     position: absolute;
+     /* background-color: rgba(219, 210, 210, 0.866);  */
+     border: none; 
+     padding: 5px 15px;
+     border-radius: 50px; 
+     cursor: pointer; 
+   }
+   
+   .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* height: 700px; */
+    background-color: rgba(0, 0, 0, 0.5);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    width: 1200px;
+    height: 300px;
+    
+  }
+
+  .btnX {
+    position: relative;
+    color: black;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    top: 0px;
+    left: 570px;
+    /* width: 155px;
+   
+    bottom: 0;
+    height: 35px; */
+  }

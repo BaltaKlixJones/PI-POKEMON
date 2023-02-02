@@ -25,7 +25,7 @@ export default function Card({ name, img, types }) {
       </div>
 
       <div className="cardPoke-description">
-        <h4>Tipo:</h4>
+      <br/>
         <h4>
           {types?.map((e) => (
             <span>{e + " "}</span>

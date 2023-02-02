@@ -6,10 +6,10 @@ function ErrorPage() {
   return (
     <div className="error-container">
       <h1 className="error-title">Error! </h1>
-      <p className="error-message">No se encontraron resultados!</p>
+      <p className="error-message">NOTHING TO SEE!</p>
       <Link to="/home">
       <button className="reload-button" onClick={"location.reload()"}>
-            <i className="fas fa-sync-alt">Volver</i>
+            <i className="fas fa-sync-alt">BACK</i>
           </button>
           </Link>
     </div>

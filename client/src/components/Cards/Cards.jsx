@@ -11,29 +11,30 @@ import Error from "../Error/Error"
 export default function Cards() {
   let statePoke = useSelector((state) => state.pokemones);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  
 
-  console.log(statePoke);
+  // console.log(statePoke);
   const dispatch = useDispatch();
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 5000);
   }, []);
 
   useEffect(() => {
     dispatch(getPokemones());
   }, [dispatch]);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pokesPerPage, setPokesPerPage] = useState(15);
+  const [currentPage, setCurrentPage] = useState(1);  // 
+  const [pokesPerPage, setPokesPerPage] = useState(10);
 
-  const indexOfLastPokes = currentPage * pokesPerPage; //15
-  const indexOfFirstPoke = indexOfLastPokes - pokesPerPage; //0
+  const indexOfLastPokes = currentPage * pokesPerPage; // 15
+  const indexOfFirstPoke = indexOfLastPokes - pokesPerPage; // 0
   const currentPokes = statePoke.slice(indexOfFirstPoke, indexOfLastPokes);
 
-  const paginado = (pageNumber) => {
+
+  const paginado = (pageNumber) => { // setea el estado de currentPage de acuerdo al numero de pag que se clickea 
     setCurrentPage(pageNumber);
   };
 

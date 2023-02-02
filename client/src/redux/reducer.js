@@ -9,9 +9,9 @@ import {
   GET_TYPES,
   FILTER_API_DB,
   ORDER_A_Z,
-  FILTER_VIDA,
   FILTER_ATTACK,
   DELETE
+  
 } from "./actions";
 
 let initialState = {
@@ -74,29 +74,16 @@ export default function rootReducer(state = initialState, action) {
         orderAttack.sort((a,b)=> {
           if (a.attack < b.attack) {
             return 1
-          }else if (a.attack > b.attack) {return -1}
-          else {return 0}
+          }else if (a.attack > b.attack) {
+            return -1
+          }
+          else {
+            return 0
+          }
         })
         return {
           ...state,
           pokemones: pokeAttack 
-        }
-
-      
-
-      case FILTER_VIDA :
-        let vidaPoke = [...state.allPokemons]
-        let vida60 = vidaPoke.filter((v) => {
-          if (v.hp < 61) return v 
-        })
-        let vidaMayor = vidaPoke.filter((vM)=> {
-          if (vM.hp > 61) return vM
-        })
-        return {
-          ...state,
-          pokemones:  action.payload === "All" ? vidaPoke : (action.payload === "hp60" ? vida60 : vidaMayor)
-
-           
         }
 
     case ORDER_A_Z:
@@ -138,11 +125,11 @@ export default function rootReducer(state = initialState, action) {
             ? aux.filter((c) => isNaN(c.id))
             : aux.filter((c) => !isNaN(c.id)),
       };
-      case DELETE:
-        return {
-          ...state,
-          
-        };
+      case DELETE : 
+      return {
+        ...state
+      }
+      
     default:
       return state;
   }
